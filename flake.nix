@@ -53,7 +53,7 @@
     let
       inherit (self) outputs;
       # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-      stateVersion = "24.11";
+      stateVersion = "25.11";
       helper = import ./lib { inherit inputs outputs stateVersion; };
 
       # System registry - central definition of all systems and their properties
