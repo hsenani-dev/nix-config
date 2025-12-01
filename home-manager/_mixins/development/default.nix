@@ -31,27 +31,6 @@ let
       aiPackagesDarwin
     else
       [ ];
-  waveboxXdgOpen = inputs.xdg-override.lib.proxyPkg {
-    inherit pkgs;
-    nameMatch = [
-      {
-        case = "^https?://accounts.google.com";
-        command = "wavebox";
-      }
-      {
-        case = "^https?://github.com/login/device";
-        command = "wavebox";
-      }
-      {
-        case = "^https?://auth.chainguard.dev/activate";
-        command = "wavebox";
-      }
-      {
-        case = "^https?://issuer.enforce.dev";
-        command = "wavebox";
-      }
-    ];
-  };
   dockerPurge = pkgs.writeShellApplication {
     name = "docker-purge";
     runtimeInputs = with pkgs; [
@@ -104,9 +83,6 @@ lib.mkIf isWorkstation {
         precommitSetup
         tokei # Modern Unix `wc` for code
       ]
-      ++ lib.optionals pkgs.stdenv.isLinux [
-        waveboxXdgOpen # Integrate Wavebox with Slack, GitHub, Auth, etc.
-      ]
       ++ aiPackages;
   };
 
@@ -121,24 +97,4 @@ lib.mkIf isWorkstation {
   #};
 
   # https://dl.thalheim.io/
-  sops = {
-    secrets = {
-      act-env = {
-        path = "${config.home.homeDirectory}/.config/act/secrets";
-        sopsFile = ../../../secrets/act.yaml;
-        mode = "0660";
-      };
-      cg-repos = {
-        path = "${config.home.homeDirectory}/.config/cg-repos";
-        sopsFile = ../../../secrets/cg-repos.yaml;
-        mode = "0644";
-      };
-      #gh_token = {
-      #  sopsFile = ../../../secrets/github.yaml;
-      #};
-      #gh_read_only = {
-      #  sopsFile = ../../../secrets/github.yaml;
-      #};
-    };
-  };
 }

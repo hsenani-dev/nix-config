@@ -35,7 +35,6 @@ let
 in
 {
   imports = [
-    ./communications
     ./development
     ./game-development
     ./libreoffice

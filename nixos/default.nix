@@ -30,8 +30,6 @@
     ./_mixins/console
     ./_mixins/hardware
     ./_mixins/network
-    ./_mixins/scripts
-    ./_mixins/server
     ./_mixins/users
     ./_mixins/virtualisation
   ]
@@ -86,7 +84,6 @@
         just
         micro
         nix-output-monitor
-        sops
       ]
       ++ lib.optionals isInstall [
         inputs.nixos-needsreboot.packages.${pkgs.system}.default
@@ -176,76 +173,6 @@
     sudo-rs = {
       enable = lib.mkDefault true;
     };
-  };
-
-  # https://dl.thalheim.io/
-  sops = lib.mkIf (isInstall) {
-    age = {
-      keyFile = "/var/lib/private/sops/age/keys.txt";
-      generateKey = false;
-    };
-    defaultSopsFile = ../secrets/secrets.yaml;
-    secrets = {
-      test-key = { };
-      ssh_key = {
-        mode = "0600";
-        path = "/root/.ssh/id_rsa";
-      };
-      ssh_pub = {
-        mode = "0644";
-        path = "/root/.ssh/id_rsa.pub";
-      };
-      # Use `make-host-keys` to enroll new host keys.
-      initrd_ssh_host_ed25519_key = {
-        mode = "0600";
-        path = "/etc/ssh/initrd_ssh_host_ed25519_key";
-        sopsFile = ../secrets/initrd.yaml;
-      };
-      initrd_ssh_host_ed25519_key_pub = {
-        mode = "0644";
-        path = "/etc/ssh/initrd_ssh_host_ed25519_key.pub";
-        sopsFile = ../secrets/initrd.yaml;
-      };
-      ssh_host_ed25519_key = {
-        mode = "0600";
-        path = "/etc/ssh/ssh_host_ed25519_key";
-        sopsFile = ../secrets/${hostname}.yaml;
-      };
-      ssh_host_ed25519_key_pub = {
-        mode = "0644";
-        path = "/etc/ssh/ssh_host_ed25519_key.pub";
-        sopsFile = ../secrets/${hostname}.yaml;
-      };
-      ssh_host_rsa_key = {
-        mode = "0600";
-        path = "/etc/ssh/ssh_host_rsa_key";
-        sopsFile = ../secrets/${hostname}.yaml;
-      };
-      ssh_host_rsa_key_pub = {
-        mode = "0644";
-        path = "/etc/ssh/ssh_host_rsa_key.pub";
-        sopsFile = ../secrets/${hostname}.yaml;
-      };
-      malak_enc.sopsFile = ../secrets/disks.yaml;
-      maul_enc.sopsFile = ../secrets/disks.yaml;
-      tanis_enc.sopsFile = ../secrets/disks.yaml;
-      shaa_enc.sopsFile = ../secrets/disks.yaml;
-      atrius_enc.sopsFile = ../secrets/disks.yaml;
-      sidious_enc.sopsFile = ../secrets/disks.yaml;
-      phasma_enc.sopsFile = ../secrets/disks.yaml;
-      vader_enc.sopsFile = ../secrets/disks.yaml;
-    };
-  };
-
-  # Create symlink to /bin/bash
-  # - https://github.com/lima-vm/lima/issues/2110
-  systemd = {
-    extraConfig = "DefaultTimeoutStopSec=10s";
-    tmpfiles.rules = [
-      "L+ /bin/bash - - - - ${pkgs.bash}/bin/bash"
-      "d /nix/var/nix/profiles/per-user/${username} 0755 ${username} root"
-      "d /var/lib/private/sops/age 0755 root root"
-    ];
   };
 
   system = {

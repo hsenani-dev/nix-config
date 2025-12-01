@@ -15,10 +15,7 @@ in
   home = {
     packages =
       with pkgs;
-      lib.optionals (isDarwin) [
-        wavebox
-      ]
-      ++ lib.optionals (isLinux) [
+      lib.optionals (isLinux) [
         mullvad-browser
       ];
   };

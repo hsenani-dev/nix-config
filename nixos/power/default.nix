@@ -1,22 +1,16 @@
 {
   inputs,
+  pkgs,
   ...
 }:
 {
   imports = [
-    inputs.nixos-hardware.nixosModules.framework-16-7040-amd
     ./disks.nix
   ];
 
   boot = {
-    initrd.availableKernelModules = [
-      "nvme"
-      "sd_mod"
-      "thunderbolt"
-      "uas"
-      "usbhid"
-      "xhci_pci"
-    ];
+    kernelPackages = pkgs.linuxPackages_latest;
+    initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
     initrd.systemd.enable = true;
     kernelModules = [
       "amdgpu"

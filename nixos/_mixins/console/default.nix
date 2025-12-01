@@ -2,15 +2,14 @@
   catppuccinPalette,
   hostname,
   isISO,
-  isServer,
   lib,
   pkgs,
   ...
 }:
 let
-  consoleKeymap = "uk";
-  locale = "en_GB.UTF-8";
-  xkbLayout = "gb";
+  consoleKeymap = "us";
+  locale = "en_US.UTF-8";
+  xkbLayout = "us";
   # Helper function to convert RGB array to comma-separated string for kmscon
   rgbToKmscon =
     colorName:
@@ -60,7 +59,7 @@ let
       palette-background=${rgbToKmscon "base"}
       sb-size=16384
     '';
-  useGeoclue = !isServer;
+  useGeoclue = true;
 
   # Use centralized VT color mapping from palette
   vtColorMap = catppuccinPalette.vtColorMap;
@@ -177,9 +176,4 @@ in
   systemd.tmpfiles.rules = [
     "d /etc/geoclue/conf.d 0755 root root"
   ];
-
-  time = {
-    hardwareClockInLocalTime = true;
-    timeZone = lib.mkIf isServer "UTC";
-  };
 }

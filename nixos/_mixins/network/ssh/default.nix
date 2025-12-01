@@ -1,13 +1,12 @@
 {
   isInstall,
-  isLaptop,
   lib,
   pkgs,
   ...
 }:
 let
-  # Don't open the firewall for SSH on laptops; Tailscale will handle it.
-  openSSHFirewall = if (isInstall && isLaptop) then false else true;
+  # Don't open the firewall for SSH on iso; Tailscale will handle it.
+  openSSHFirewall = if (isInstall) then false else true;
 in
 {
   environment = lib.mkIf isInstall { systemPackages = with pkgs; [ ssh-to-age ]; };
@@ -21,17 +20,6 @@ in
       settings = {
         PasswordAuthentication = false;
       };
-    };
-    sshguard = {
-      enable = isInstall;
-      whitelist = [
-        "10.10.10.0/24"
-        "10.10.30.0/24"
-        "10.10.40.0/24"
-        "10.10.50.0/24"
-        "62.31.16.153/29"
-        "80.209.186.64/28"
-      ];
     };
   };
 }

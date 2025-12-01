@@ -9,7 +9,7 @@
   ...
 }:
 let
-  useLowLatencyPipewire = hostname == "phasma" || hostname == "vader";
+  useLowLatencyPipewire = false;
 in
 {
   # Enable the threadirqs kernel parameter to reduce pipewire/audio latency

@@ -5,25 +5,14 @@
   username,
   ...
 }:
-let
-  forFamily = [
-    "agatha"
-    "louise"
-  ];
-  forMartin = [ "martin" ];
-in
 {
   imports = lib.optional (builtins.pathExists (./. + "/${username}.nix")) ./${username}.nix;
   environment.systemPackages =
     with pkgs;
-    lib.optionals (builtins.elem username forFamily && isInstall) [
+    lib.optionals (isInstall) [
       google-chrome
-      microsoft-edge
-    ]
-    ++ lib.optionals (builtins.elem username forMartin && isInstall) [
       brave
       chromium
-      wavebox
     ];
 
   # TODO: Configure Microsoft Edge policy

@@ -21,7 +21,6 @@ in
 
     # Modules exported from other flakes:
     inputs.catppuccin.homeModules.catppuccin
-    inputs.sops-nix.homeManagerModules.sops
     inputs.mac-app-util.homeManagerModules.default
     inputs.nix-index-database.homeModules.nix-index
     inputs.vscode-server.nixosModules.home
@@ -208,41 +207,8 @@ in
     };
   };
 
-  # https://dl.thalheim.io/
-  sops = {
-    age = {
-      keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
-      generateKey = false;
-    };
-    defaultSopsFile = ../secrets/secrets.yaml;
-    secrets = {
-      asciinema.path = "${config.home.homeDirectory}/.config/asciinema/config";
-      gpg_private = { };
-      gpg_public = { };
-      gpg_ownertrust = { };
-      hueadm.path = "${config.home.homeDirectory}/.hueadm.json";
-      obs_secrets = { };
-      ssh_config.path =
-        if isLinux then
-          "${config.home.homeDirectory}/.ssh/config"
-        else
-          "${config.home.homeDirectory}/.ssh/local_config";
-      ssh_key.path = "${config.home.homeDirectory}/.ssh/id_rsa";
-      ssh_pub.path = "${config.home.homeDirectory}/.ssh/id_rsa.pub";
-      ssh_semaphore_key.path = "${config.home.homeDirectory}/.ssh/id_rsa_semaphore";
-      ssh_semaphore_pub.path = "${config.home.homeDirectory}/.ssh/id_rsa_semaphore.pub";
-      transifex.path = "${config.home.homeDirectory}/.transifexrc";
-    };
-  };
-
   # Nicely reload system units when changing configs
   systemd.user.startServices = lib.mkIf isLinux "sd-switch";
-  # Create age keys directory for SOPS
-  systemd.user.tmpfiles = lib.mkIf isLinux {
-    rules = [
-      "d ${config.home.homeDirectory}/.config/sops/age 0755 ${username} users - -"
-    ];
-  };
 
   xdg = {
     enable = isLinux;
