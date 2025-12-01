@@ -128,6 +128,5 @@ in
         user = "greeter";
       };
     };
-    vt = 1;
   };
 }
