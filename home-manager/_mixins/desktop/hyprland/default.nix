@@ -7,7 +7,7 @@
   ...
 }:
 let
-  xkbLayout = "gb";
+  xkbLayout = "us";
   monitors = (import ./monitors.nix { }).${hostname};
 in
 {
@@ -74,7 +74,7 @@ in
         "ALT, Tab, bringactivetotop"
         "ALT SHIFT, Tab, cyclenext, prev"
         "ALT SHIFT, Tab, bringactivetotop"
-        # Move focus with SHIFT + arrow keys
+        # Move focus with SHIFT  + arrow keys
         "ALT, left, movefocus, l"
         "ALT, right, movefocus, r"
         "ALT, up, movefocus, u"
@@ -111,7 +111,6 @@ in
       # https://wiki.hyprland.org/Configuring/Variables/#animations
       animations = {
         enabled = true;
-        first_launch_animation = true;
       };
       # https://wiki.hyprland.org/Configuring/Animations/
       animation = [
@@ -182,7 +181,6 @@ in
         preserve_split = true;
       };
       gestures = {
-        workspace_swipe = true;
         workspace_swipe_forever = false;
       };
       group = {
@@ -264,7 +262,6 @@ in
         "size 395 496, class:(org.gnome.Calculator)"
         "size 700 500, class:(nm-connection-editor)"
         "size 1134 880, title:(Pipewire Volume Control)"
-        "size 960 640 initialTitle:(Polychromatic)"
         "size 880 1010, title:(overskride)"
         "size 886 960, title:(Trayscale)"
 
