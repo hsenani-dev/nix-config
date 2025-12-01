@@ -6,21 +6,9 @@
   ...
 }:
 let
-  wlogoutMargins =
-    if hostname == "vader" then
-      "--margin-top 960 --margin-bottom 960"
-    else if hostname == "phasma" then
-      "--margin-left 540 --margin-right 540"
-    else
-      "";
-  outputDisplay = if (hostname == "vader" || hostname == "phasma") then "DP-1" else "eDP-1";
-  hwmonPath =
-    if (hostname == "vader" || hostname == "phasma") then
-      "/sys/class/hwmon/hwmon4/temp1_input"
-    else if hostname == "tanis" then
-      "/sys/class/hwmon/hwmon3/temp1_input"
-    else
-      "/sys/class/hwmon/hwmon0/temp1_input";
+  wlogoutMargins = if hostname == "power" then "--margin-top 960 --margin-bottom 960" else "";
+  outputDisplay = "HDMI-A-2";
+  hwmonPath = "/sys/class/hwmon/hwmon3/temp1_input";
   bluetoothToggle = pkgs.writeShellApplication {
     name = "bluetooth-toggle";
     runtimeInputs = with pkgs; [
