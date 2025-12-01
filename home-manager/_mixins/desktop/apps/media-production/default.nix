@@ -8,7 +8,6 @@
 }:
 let
   inherit (pkgs.stdenv) isLinux;
-  davinciResolve = (pkgs.davinci-resolve.override { studioVariant = true; });
 in
 {
   dconf.settings = with lib.hm.gvariant; {
