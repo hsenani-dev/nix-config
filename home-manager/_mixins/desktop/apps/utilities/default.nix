@@ -13,7 +13,6 @@ lib.mkIf (builtins.elem username installFor) {
     cpu-x
     dconf-editor
     pika-backup
-    squirreldisk
     usbimager
     vaults
   ];

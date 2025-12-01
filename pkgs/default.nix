@@ -2,7 +2,6 @@
 # You can build them using 'nix build .#example'
 pkgs: {
   # Local packages being prepped for upstreaming
-  cider = pkgs.callPackage ./cider { };
   davinci-resolve = pkgs.callPackage ./davinci-resolve { };
   defold = pkgs.callPackage ./defold { };
   defold-bob = pkgs.callPackage ./defold-bob { };

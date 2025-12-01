@@ -2,7 +2,6 @@
   catppuccinPalette,
   config,
   inputs,
-  isLima,
   isWorkstation,
   lib,
   outputs,
@@ -25,11 +24,8 @@ in
     inputs.nix-index-database.homeModules.nix-index
     inputs.vscode-server.nixosModules.home
     ./_mixins/development
-    ./_mixins/filesync
-    ./_mixins/scripts
     ./_mixins/terminal
     ./_mixins/users
-    ./_mixins/yubikey
   ]
   ++ lib.optional isWorkstation ./_mixins/desktop;
 
@@ -47,8 +43,6 @@ in
     homeDirectory =
       if isDarwin then
         "/Users/${username}"
-      else if isLima then
-        "/home/${username}.linux"
       else
         "/home/${username}";
     file.".config/fontconfig/fonts.conf".text = ''
@@ -79,7 +73,7 @@ in
       [
         nerd-fonts.fira-code
         font-awesome
-        noto-fonts-emoji
+        noto-fonts-color-emoji
         noto-fonts-monochrome-emoji
         symbola
         work-sans
@@ -108,7 +102,7 @@ in
         poppins-font
         source-serif
         spaceport-2006-font
-        ubuntu_font_family
+        ubuntu-classic
         unscii
         zx-spectrum-7-font
       ];
@@ -223,8 +217,7 @@ in
       };
     };
     userDirs = {
-      # Do not create XDG directories for LIMA; it is confusing
-      enable = isLinux && !isLima;
+      enable = isLinux;
       createDirectories = lib.mkDefault true;
       extraConfig = {
         XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/Pictures/Screenshots";

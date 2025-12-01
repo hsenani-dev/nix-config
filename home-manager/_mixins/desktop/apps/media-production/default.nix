@@ -1,7 +1,6 @@
 {
   config,
   hostname,
-  isLima,
   lib,
   pkgs,
   username,
@@ -413,9 +412,6 @@ in
       gimp3
       gnome-sound-recorder
       inkscape
-    ]
-    ++ lib.optionals (!isLima) [
-      davinciResolve
     ];
 
   services.easyeffects = lib.mkIf (hostname == "vader" || hostname == "phasma") {

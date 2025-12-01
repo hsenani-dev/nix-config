@@ -1,7 +1,6 @@
 {
   config,
   hostname,
-  isLima,
   lib,
   pkgs,
   username,
