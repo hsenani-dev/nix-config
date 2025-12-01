@@ -31,7 +31,6 @@
     ./_mixins/hardware
     ./_mixins/network
     ./_mixins/users
-    ./_mixins/virtualisation
   ]
   ++ lib.optional isWorkstation ./_mixins/desktop;
 
