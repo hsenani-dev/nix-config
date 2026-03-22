@@ -11,7 +11,6 @@
         packages = with pkgs; [
           just
           nixd # Nix language server
-          bacon
           nil
         ];
       };
