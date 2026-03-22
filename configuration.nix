@@ -5,11 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      <home-manager/nixos>
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -55,7 +54,7 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   # services.displayManager.cosmic-greeter.enable = true;
-  # services.desktopManager.cosmic.enable = true;  
+  # services.desktopManager.cosmic.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -91,9 +90,13 @@
   users.users.henry = {
     isNormalUser = true;
     description = "Henry Senanian";
-    extraGroups = [ "networkmanager" "wheel" "dialout" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "dialout"
+    ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -119,7 +122,10 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -175,23 +181,27 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
 
+  home-manager.users.henry =
+    { pkgs, ... }:
+    {
+      home.packages = [
+        pkgs.oh-my-fish
+        pkgs.git
+      ];
+      home.shellAliases = {
+        vim = "nvim";
+      };
+      programs.bash.enable = true;
+      programs.fish.enable = true;
 
-  home-manager.users.henry = { pkgs, ... }: {
-    home.packages = [ pkgs.oh-my-fish pkgs.git ];
-    home.shellAliases = {
-      vim = "nvim";
+      programs.git = {
+        enable = true;
+        userName = "Henry Senanian";
+        userEmail = "henry@sinabi.dev";
+      };
+
+      # The state version is required and should stay at the version
+      # originally installed.
+      home.stateVersion = "25.11";
     };
-    programs.bash.enable = true;
-    programs.fish.enable = true;
-
-    programs.git = {
-      enable = true;
-      userName = "Henry Senanian";
-      userEmail = "henry@sinabi.dev";
-    };
-
-    # The state version is required and should stay at the version
-    # originally installed.
-    home.stateVersion = "25.11";
-  };
 }
