@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  system,
   ...
 }:
 let
@@ -67,8 +68,13 @@ in
   options = {
     hosts = mkOption {
       type = types.listOf hostparams;
+      default = [ ];
+    };
+    filteredHosts = mkOption {
+      type = types.listOf hostparams;
+      default = [ ];
     };
   };
 
-  config.hosts = [ ];
+  config.filteredHosts = lib.filter (host: host.machine.system == system) config.hosts;
 }

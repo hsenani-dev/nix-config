@@ -6,6 +6,7 @@
       self',
       pkgs,
       lib,
+      system,
       ...
     }:
     {

@@ -8,6 +8,7 @@ in
       config,
       pkgs,
       lib,
+      system,
       ...
     }:
     {
@@ -21,7 +22,7 @@ in
       #     value = lib.nixosSystem { };
       #   }) config.hosts
       # );
-      #
+
       options = {
         nixosConfigurations = lib.mkOption {
           type = lib.types.attrs;
@@ -34,7 +35,7 @@ in
             lib.map (params: {
               name = params.machine.name;
               value = lib.nixosSystem { };
-            }) config.hosts
+            }) config.filteredHosts
           )
         );
       };
