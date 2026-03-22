@@ -21,8 +21,14 @@ in
       #     value = lib.nixosSystem { };
       #   }) config.hosts
       # );
+      #
+      options = {
+        nixosConfigurations = lib.mkOption {
+          type = lib.types.attrs;
+        };
+      };
 
-      config.flake = {
+      config = {
         nixosConfigurations = (
           builtins.listToAttrs (
             lib.map (params: {
