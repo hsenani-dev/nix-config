@@ -43,6 +43,15 @@ let
             type = types.str;
           };
 
+          type =
+            let
+              machineTypes = [ "generic-desktop-x86" ];
+            in
+            mkOption {
+              type = types.enum machineTypes;
+              default = "generic-desktop-x86";
+            };
+
           # TODO: make this an enum of systems.
           system = mkOption {
             type = types.str;

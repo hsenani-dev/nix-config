@@ -26,12 +26,30 @@ in
         };
       };
 
-      config = {
+      config.flake = {
         nixosConfigurations = (
           builtins.listToAttrs (
             lib.map (params: {
               name = params.machine.name;
-              value = lib.nixosSystem { };
+              value = lib.nixosSystem {
+                inherit (params.machine) system;
+
+                specialArgs = {
+                  inherit params inputs;
+                };
+
+                modules = [
+                  {
+                    home-manager = {
+                      users.${params.user.name} = {
+
+                      };
+                    };
+                  }
+                ]
+                # Additional modules defined in host.
+                ++ params.modules;
+              };
             }) config.filteredHosts
           )
         );
