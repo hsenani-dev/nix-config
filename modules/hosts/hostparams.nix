@@ -43,6 +43,7 @@ let
             type = types.str;
           };
 
+          # TODO: make this an enum of systems.
           system = mkOption {
             type = types.str;
             default = "x86_64-linux";
