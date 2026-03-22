@@ -14,18 +14,23 @@ in
       imports = [
         ./hostparams.nix
       ];
-      options = {
-        hosts = lib.mkOption {
-          type = lib.types.listOf config.hostparams;
-          default = [ ];
-          description = "host configuraiton";
-        };
-      };
+
+      # test = builtins.listToAttrs (
+      #   lib.map (params: {
+      #     name = params.machine.name;
+      #     value = lib.nixosSystem { };
+      #   }) config.hosts
+      # );
 
       config.flake = {
-        nixosConfigurations = {
-          builtins.listToAttr [3, 4, 5];
-        };
+        nixosConfigurations = (
+          builtins.listToAttrs (
+            lib.map (params: {
+              name = params.machine.name;
+              value = lib.nixosSystem { };
+            }) config.hosts
+          )
+        );
       };
     }
   );

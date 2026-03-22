@@ -3,10 +3,7 @@ let
   inherit (lib)
     types
     mkOption
-    mkDefault
     ;
-in
-{
   hostparams = types.submodule {
     options = {
       de.type = mkOption {
@@ -14,15 +11,18 @@ in
           "cosmic"
           "gnome"
         ];
+        default = "cosmic";
       };
 
       user = {
         name = mkOption {
           type = types.str;
+          default = "henry";
         };
 
         display-name = mkOption {
           type = types.str;
+          default = "Henry Senanian";
         };
       };
 
@@ -33,27 +33,33 @@ in
 
         system = mkOption {
           type = types.str;
+          default = "x86_64-linux";
         };
 
         flake-location = mkOption {
           type = types.str;
+          default = "/home/${config.user.name}/config";
         };
 
         state-version = mkOption {
           type = types.str;
+          default = "25.11";
+        };
+
+        modules = mkOption {
+          type = types.listOf types.anything;
+          default = [ ];
         };
       };
     };
-
-    config = {
-      de.type = mkDefault "cosmic";
-
-      machine.system = mkDefault "x86_64-linux";
-      machine.flake-location = mkDefault "/home/${config.user.name}/config";
-      machine.state-version = "25.11";
-
-      user.name = mkDefault "henry";
-      user.display-name = "Henry Senanian";
+  };
+in
+{
+  options = {
+    hosts = mkOption {
+      type = types.listOf hostparams;
     };
   };
+
+  config.hosts = [ ];
 }
