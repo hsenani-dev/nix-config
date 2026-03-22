@@ -18,7 +18,7 @@
       ];
 
       imports = [
-        # ./modules/nixos/default.nix
+        ./modules/nixos/default.nix
         ./modules/hosts
         ./modules/devshell.nix
         ./hosts

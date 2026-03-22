@@ -17,7 +17,7 @@
       loader = {
         systemd-boot.enable = true;
         efi.canTouchEfiVariables = true;
-        systemd-boot.configurationLimit = lib.mkDefault 10;
+        systemd-boot.configurationLimit = lib.mkDefault 5;
         systemd-boot.consoleMode = "max";
         systemd-boot.memtest86.enable = true;
         timeout = lib.mkDefault 10;
@@ -43,6 +43,7 @@
       };
 
       kernelModules = [ "kvm-amd" ];
+      kernelPackages = pkgs.linuxPackages_latest;
       extraModulePackages = [ ];
     };
 
