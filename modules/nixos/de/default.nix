@@ -1,11 +1,11 @@
 { lib, params, ... }:
 {
   imports = [
-    lib.mkIf
-    (params.machine.de.type == "gnome")
-    ./gnome.nix
-    lib.mkIf
-    (params.machine.de.type == "cosmic")
+    # lib.mkIf
+    # (params.machine.de.type == "gnome")
+    # ./gnome.nix
+    # lib.mkIf
+    # (params.machine.de.type == "cosmic")
     ./cosmic.nix
   ];
 

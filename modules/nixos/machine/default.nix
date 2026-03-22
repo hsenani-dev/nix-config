@@ -1,8 +1,8 @@
 { lib, params, ... }:
 {
   imports = [
-    lib.mkIf
-    (params.machine.type == "generic-desktop-x86")
+    # lib.mkIf
+    # (params.machine.type == "generic-desktop-x86")
     ./generic.nix
   ];
 

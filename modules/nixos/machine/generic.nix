@@ -6,9 +6,9 @@
   ...
 }:
 {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+  # imports = [
+  #   (modulesPath + "/installer/scan/not-detected.nix")
+  # ];
 
   config = {
     nixpkgs.hostPlatform = lib.mkForce "x86_64-linux";

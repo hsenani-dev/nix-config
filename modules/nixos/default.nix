@@ -2,7 +2,7 @@
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    inputs.nixos-cli.nixosModules.nixos-cli
+    # inputs.nixos-cli.nixosModules.nixos-cli
 
     # hardware
     ./machine
@@ -20,12 +20,12 @@
   ];
 
   config = {
-    programs.nixos-cli = {
-      enable = true;
-      settings = {
-        config_location = "${params.machine.flake-location}";
-      };
-    };
+    # programs.nixos-cli = {
+    #   enable = true;
+    #   settings = {
+    #     config_location = "${params.machine.flake-location}";
+    #   };
+    # };
 
     users.users.${params.user.name} = {
       isNormalUser = true;

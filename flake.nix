@@ -6,6 +6,7 @@
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    # nixos-cli.url = "github:nix-community/nixos-cli";
   };
   outputs =
     inputs:
