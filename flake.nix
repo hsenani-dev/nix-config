@@ -13,7 +13,7 @@
       # Generated system configurations
       nixosConfigurations.nix-os = nixpkgs.lib.nixosSystem {
         modules = [
-          /etc/nixos/configuration.nix
+          ./configuration.nix
         ];
       };
     };
