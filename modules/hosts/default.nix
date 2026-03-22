@@ -1,8 +1,16 @@
-{ inputs, flake-parts-lib, ... }:
+{
+  inputs,
+  flake-parts-lib,
+  systems,
+  ...
+}:
 let
   inherit (flake-parts-lib) mkPerSystemOption;
 in
 {
+  imports = [
+    ./hostparams.nix
+  ];
   options.perSystem = mkPerSystemOption (
     {
       config,
@@ -12,9 +20,6 @@ in
       ...
     }:
     {
-      imports = [
-        ./hostparams.nix
-      ];
 
       # test = builtins.listToAttrs (
       #   lib.map (params: {
@@ -27,6 +32,11 @@ in
         nixosConfigurations = lib.mkOption {
           type = lib.types.attrs;
         };
+        # availableSystems = lib.mkOption {
+        #   type = lib.types.listOf lib.types.str;
+        #   default = systems;
+        #   description = "The list of systems defined in the flake.";
+        # };
       };
 
       config = {

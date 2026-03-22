@@ -22,5 +22,23 @@
         ./modules/hosts
         ./hosts
       ];
+
+      # The perSystem section iterates over each system
+      perSystem =
+        {
+          config,
+          pkgs,
+          system,
+          lib,
+          systems,
+          ...
+        }:
+        {
+          options.availableSystems = lib.mkOption {
+            type = lib.types.listOf lib.types.str;
+            default = systems;
+            description = "The list of systems defined in the flake.";
+          };
+        };
     };
 }

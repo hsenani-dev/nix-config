@@ -17,6 +17,10 @@
 
           # modules = [ ];
         }
+        {
+          machine.name = "mac-mini";
+          machine.system = "aarch64-darwin";
+        }
       ];
     };
 }
