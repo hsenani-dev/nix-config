@@ -1,58 +1,67 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 let
   inherit (lib)
     types
     mkOption
+    mkDefault
+    mkIf
     ;
-  hostparams = types.submodule {
-    options = {
-      de.type = mkOption {
-        type = types.enum [
-          "cosmic"
-          "gnome"
-        ];
-        default = "cosmic";
+  hostparams = types.submodule (
+    { config, ... }:
+    {
+      options = {
+        de.type = mkOption {
+          type = types.enum [
+            "cosmic"
+            "gnome"
+          ];
+          default = "cosmic";
+        };
+
+        user = {
+          name = mkOption {
+            type = types.str;
+            default = "henry";
+          };
+
+          display-name = mkOption {
+            type = types.str;
+            default = "Henry Senanian";
+          };
+        };
+
+        machine = {
+          name = mkOption {
+            type = types.str;
+          };
+
+          system = mkOption {
+            type = types.str;
+            default = "x86_64-linux";
+          };
+
+          state-version = mkOption {
+            type = types.str;
+            default = "25.11";
+          };
+
+          flake-location = mkOption {
+            type = types.str;
+            default = "/home/${config.user.name}/home";
+          };
+
+          modules = mkOption {
+            type = types.listOf types.anything;
+            default = [ ];
+          };
+        };
       };
-
-      user = {
-        name = mkOption {
-          type = types.str;
-          default = "henry";
-        };
-
-        display-name = mkOption {
-          type = types.str;
-          default = "Henry Senanian";
-        };
-      };
-
-      machine = {
-        name = mkOption {
-          type = types.str;
-        };
-
-        system = mkOption {
-          type = types.str;
-          default = "x86_64-linux";
-        };
-
-        flake-location = mkOption {
-          type = types.str;
-          default = "/home/${config.user.name}/config";
-        };
-
-        state-version = mkOption {
-          type = types.str;
-          default = "25.11";
-        };
-
-        modules = mkOption {
-          type = types.listOf types.anything;
-          default = [ ];
-        };
-      };
-    };
-  };
+    }
+  );
 in
 {
   options = {

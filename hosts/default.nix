@@ -1,6 +1,21 @@
+{ ... }:
 {
-  machine.name = "nixos-home";
-  de.type = "cosmic";
+  perSystem =
+    {
+      config,
+      self',
+      pkgs,
+      lib,
+      ...
+    }:
+    {
+      config.hosts = [
+        {
+          machine.name = "nixos-home";
+          de.type = "cosmic";
 
-  moduels = [ ];
+          # modules = [ ];
+        }
+      ];
+    };
 }

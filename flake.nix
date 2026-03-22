@@ -20,6 +20,7 @@
       imports = [
         ./modules/nixos/default.nix
         ./modules/hosts
+        ./hosts
       ];
     };
 }
