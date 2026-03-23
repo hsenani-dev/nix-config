@@ -4,6 +4,7 @@
     {
       machine.name = "nixos-home";
       de.type = "cosmic";
+      gaming.enable = true;
 
       modules = [
         {

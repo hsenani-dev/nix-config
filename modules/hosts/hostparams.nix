@@ -6,6 +6,7 @@ let
   inherit (lib)
     types
     mkOption
+    mkEnableOption
     ;
 
   hostparams = types.submodule (
@@ -29,6 +30,11 @@ let
           display-name = mkOption {
             type = types.str;
             default = "Henry Senanian";
+          };
+
+          email = mkOption {
+            type = types.str;
+            default = "henry@sinabi.dev";
           };
         };
 
@@ -61,6 +67,10 @@ let
             type = types.str;
             default = "/home/${config.user.name}/config";
           };
+        };
+
+        gaming = {
+          enable = mkEnableOption "enables gaming related applications and services";
         };
 
         modules = mkOption {
