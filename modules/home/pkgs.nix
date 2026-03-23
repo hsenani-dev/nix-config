@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    git
-    zed-editor
-  ];
-  programs.chromium.enable = true;
+  # config.home.packages = with pkgs; [
+  #   git
+  #   zed-editor
+  # ];
+  # programs.chromium.enable = true;
 }

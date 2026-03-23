@@ -36,9 +36,19 @@
     home-manager = {
       users.${params.user.name} = {
         imports = [
-
+          ../home
         ];
       };
+
+      useGlobalPkgs = true;
+
+      useUserPackages = true;
+
+      extraSpecialArgs = {
+        inherit inputs params;
+      };
+
+      backupFileExtension = "backup";
     };
   };
 }
