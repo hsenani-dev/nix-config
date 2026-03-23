@@ -27,7 +27,7 @@ in
     # ./btop.nix # Modern Unix `htop`
     # ./cava.nix # Terminal audio visualizer
     ./dircolors.nix # Terminal colors
-    # ./direnv.nix # Modern Unix `env`
+    ./direnv.nix # Modern Unix `env`
     # ./eza.nix # Modern Unix `ls`
     # ./fastfetch.nix # Modern Unix `neofetch`
     # ./fd.nix # Modern Unix `find`
