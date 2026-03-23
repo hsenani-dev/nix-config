@@ -4,7 +4,7 @@
     enable = true;
 
     plugins = with pkgs.vimPlugins; [
-      vim-vim-surround
+      vim-surround
       substitute-nvim
     ];
 
