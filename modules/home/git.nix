@@ -6,10 +6,10 @@
   ...
 }:
 {
-  # catppuccin = {
-  #   delta.enable = config.programs.git.delta.enable;
-  #   gitui.enable = config.programs.gitui.enable;
-  # };
+  catppuccin = {
+    delta.enable = config.programs.delta.enable;
+    gitui.enable = config.programs.gitui.enable;
+  };
 
   programs = {
     git = {
@@ -64,6 +64,9 @@
         line-numbers = true;
         side-by-side = true;
       };
+    };
+    gitui = {
+      enable = true;
     };
   };
 }

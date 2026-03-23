@@ -2,6 +2,7 @@
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    inputs.catppuccin.nixosModules.catppuccin
     # inputs.nixos-cli.nixosModules.nixos-cli
 
     # hardware
@@ -43,6 +44,7 @@
       users.${params.user.name} = {
         imports = [
           ../home
+          inputs.catppuccin.homeModules.catppuccin
         ];
       };
 

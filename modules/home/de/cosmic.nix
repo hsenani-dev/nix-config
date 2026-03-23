@@ -12,5 +12,6 @@
     cosmic-ext-calculator
     cosmic-ext-ctl
     cosmic-ext-tweaks
+    gnome-calculator
   ];
 }

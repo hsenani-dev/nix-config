@@ -8,6 +8,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     # nixos-cli.url = "github:nix-community/nixos-cli";
+    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs =
     inputs:
@@ -22,7 +24,7 @@
       imports = [
         # ./modules/nixos/default.nix
         ./modules/hosts
-	#./modules/home
+        #./modules/home
         ./modules/devshell.nix
         # ./modules/treefmt.nix
         # ./hosts
