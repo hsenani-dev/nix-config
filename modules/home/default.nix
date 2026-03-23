@@ -2,6 +2,7 @@
 {
   imports = [
     ./pkgs.nix
+    ./direnv.nix
   ];
   config = {
     home = {
