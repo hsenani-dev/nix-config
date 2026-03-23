@@ -21,7 +21,7 @@ in
     }:
     {
       options = {
-        nixosConfigurations = lib.mkOption {
+        flake.nixosConfigurations = lib.mkOption {
           type = lib.types.attrs;
         };
       };
@@ -46,9 +46,10 @@ in
                       };
                     };
                   }
-                ]
+                  ../nixos
+                ];
                 # Additional modules defined in host.
-                ++ params.modules;
+                # ++ params.modules;
               };
             }) config.filteredHosts
           )
