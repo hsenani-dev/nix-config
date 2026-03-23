@@ -2,7 +2,6 @@
   params,
   config,
   pkgs,
-  inputs,
   ...
 }:
 {
