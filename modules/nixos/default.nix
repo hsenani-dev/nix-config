@@ -30,7 +30,10 @@
     users.users.${params.user.name} = {
       isNormalUser = true;
       description = params.user.display-name;
-      extraGroups = [ "wheel dialout" ];
+      extraGroups = [
+        "wheel"
+        "dialout"
+      ];
     };
 
     home-manager = {

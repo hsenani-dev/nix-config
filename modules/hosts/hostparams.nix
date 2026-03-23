@@ -59,7 +59,7 @@ let
 
           flake-location = mkOption {
             type = types.str;
-            default = "/home/${config.user.name}/home";
+            default = "/home/${config.user.name}/config";
           };
         };
 

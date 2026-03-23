@@ -21,15 +21,14 @@
           };
 
           modules = [
-            {
-              home-manager = {
-                users.${params.user.name} = {
+            # {
+            #   home-manager = {
+            #     users.${params.user.name} = {
 
-                };
-              };
-            }
+            #     };
+            #   };
+            # }
             ../nixos
-            ../home
           ]
           # Additional modules defined in host.
           ++ params.modules;
