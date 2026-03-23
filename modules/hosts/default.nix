@@ -29,9 +29,9 @@
               };
             }
             ../nixos
-          ];
+          ]
           # Additional modules defined in host.
-          # ++ params.modules;
+          ++ params.modules;
         };
       }) config.hosts
     )

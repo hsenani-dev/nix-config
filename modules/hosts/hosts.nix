@@ -5,7 +5,7 @@
       machine.name = "nixos-home";
       de.type = "cosmic";
 
-      # modules = [ ];
+      modules = [ ];
     }
     {
       machine.name = "mac-mini";

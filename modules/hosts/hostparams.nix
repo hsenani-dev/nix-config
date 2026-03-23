@@ -62,11 +62,11 @@ let
             type = types.str;
             default = "/home/${config.user.name}/home";
           };
+        };
 
-          modules = mkOption {
-            type = types.listOf types.anything;
-            default = [ ];
-          };
+        modules = mkOption {
+          type = types.listOf types.anything;
+          default = [ ];
         };
       };
     }
