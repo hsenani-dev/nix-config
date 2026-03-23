@@ -53,7 +53,7 @@
         ".DS_Store"
         "bin/"
         "dist/"
-        "direnv*"
+        ".direnv/"
         "result*"
       ];
     };
