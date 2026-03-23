@@ -29,6 +29,7 @@
               };
             }
             ../nixos
+	    ../home
           ]
           # Additional modules defined in host.
           ++ params.modules;
