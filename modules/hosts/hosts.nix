@@ -1,26 +1,15 @@
 { ... }:
 {
-  perSystem =
+  config.hosts = [
     {
-      config,
-      self',
-      pkgs,
-      lib,
-      system,
-      ...
-    }:
-    {
-      config.hosts = [
-        {
-          machine.name = "nixos-home";
-          de.type = "cosmic";
+      machine.name = "nixos-home";
+      de.type = "cosmic";
 
-          # modules = [ ];
-        }
-        {
-          machine.name = "mac-mini";
-          machine.system = "aarch64-darwin";
-        }
-      ];
-    };
+      # modules = [ ];
+    }
+    {
+      machine.name = "mac-mini";
+      machine.system = "aarch64-darwin";
+    }
+  ];
 }

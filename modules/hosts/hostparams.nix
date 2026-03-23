@@ -1,18 +1,13 @@
 {
   lib,
   config,
-  system,
-  flake-parts-lib,
   ...
 }:
 let
   inherit (lib)
     types
     mkOption
-    mkDefault
-    mkIf
     ;
-  inherit (flake-parts-lib) mkPerSystemOption;
 
   hostparams = types.submodule (
     { config, ... }:
@@ -78,27 +73,14 @@ let
   );
 in
 {
-  options.perSystem = mkPerSystemOption (
-    {
-      config,
-      pkgs,
-      lib,
-      system,
-      ...
-    }:
-    {
-      options = {
-        hosts = mkOption {
-          type = types.listOf hostparams;
-          default = [ ];
-        };
-        filteredHosts = mkOption {
-          type = types.listOf hostparams;
-          default = [ ];
-        };
-      };
-
-      config.filteredHosts = lib.filter (host: host.machine.system == system) config.hosts;
-    }
-  );
+  options = {
+    hosts = mkOption {
+      type = types.listOf hostparams;
+      default = [ ];
+    };
+    filteredHosts = mkOption {
+      type = types.listOf hostparams;
+      default = [ ];
+    };
+  };
 }

@@ -6,6 +6,7 @@
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
     # nixos-cli.url = "github:nix-community/nixos-cli";
   };
   outputs =
@@ -22,7 +23,7 @@
         # ./modules/nixos/default.nix
         ./modules/hosts
         ./modules/devshell.nix
-        ./modules/treefmt.nix
+        # ./modules/treefmt.nix
         # ./hosts
       ];
     };
