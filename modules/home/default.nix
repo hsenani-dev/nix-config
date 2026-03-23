@@ -2,6 +2,7 @@
   params,
   config,
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -15,6 +16,29 @@
     home = {
       username = params.user.name;
       homeDirectory = "/home/${params.user.name}";
+      file.".config/fontconfig/fonts.conf".text = ''
+        <?xml version="1.0"?>
+        <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+        <fontconfig>
+          <match target="font">
+            <edit name="antialias" mode="assign">
+              <bool>true</bool>
+            </edit>
+            <edit name="hinting" mode="assign">
+              <bool>true</bool>
+            </edit>
+            <edit name="hintstyle" mode="assign">
+              <const>hintslight</const>
+            </edit>
+            <edit name="rgba" mode="assign">
+              <const>rgb</const>
+            </edit>
+            <edit name="lcdfilter" mode="assign">
+              <const>lcddefault</const>
+            </edit>
+          </match>
+        </fontconfig>
+      '';
       packages = with pkgs; [
         nerd-fonts.fira-code
         font-awesome
@@ -34,6 +58,13 @@
         unscii
         cascadia-code
       ];
+      sessionVariables = {
+        COLORTERM = "truecolor";
+        EDITOR = "nvim";
+        SUDO_EDITOR = "nvim";
+        SYSTEMD_EDITOR = "nvim";
+        VISUAL = "nvim";
+      };
     };
 
     fonts = {
@@ -69,6 +100,14 @@
       fish.enable = config.programs.fish.enable;
       zsh-syntax-highlighting.enable = config.programs.zsh.enable;
     };
-    programs.home-manager.enable = true;
+    programs = {
+      fish = {
+        enable = true;
+        shellInit = ''
+          set fish_greeting ""
+        '';
+      };
+      home-manager.enable = true;
+    };
   };
 }
