@@ -78,9 +78,5 @@ in
       type = types.listOf hostparams;
       default = [ ];
     };
-    filteredHosts = mkOption {
-      type = types.listOf hostparams;
-      default = [ ];
-    };
   };
 }

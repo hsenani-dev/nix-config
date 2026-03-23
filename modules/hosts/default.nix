@@ -33,7 +33,7 @@
           # Additional modules defined in host.
           # ++ params.modules;
         };
-      }) config.filteredHosts
+      }) config.hosts
     )
   );
 }
