@@ -4,6 +4,7 @@
     ./pkgs.nix
     ./direnv.nix
     ./git.nix
+    ./de
   ];
   config = {
     home = {
