@@ -1,4 +1,4 @@
-{ lib, params, ... }:
+{ params, ... }:
 {
   imports = [
     # lib.mkIf
