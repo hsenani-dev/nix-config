@@ -29,6 +29,8 @@
         "mem_sleep_default=s2idle"
       ];
 
+      plymouth.enable = true;
+
       initrd = {
         availableKernelModules = [
           "nvme"
@@ -46,6 +48,8 @@
       kernelPackages = pkgs.linuxPackages_latest;
       extraModulePackages = [ ];
     };
+
+    catppuccin.plymouth.enable = config.boot.plymouth.enable;
 
     # CPU
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
