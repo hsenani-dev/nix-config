@@ -1,23 +1,35 @@
-{ withSystem, inputs, ... }:
+{ withSystem, inputs, config, ... }:
 {
   imports = [
     ./hosts.nix
     ./hostparams.nix
   ];
-  flake.nixosConfigurations.my-machine = inputs.nixpkgs.lib.nixosSystem {
-    modules = [
-      (
-        { pkgs, ... }:
-        {
-          imports = [
-            # ./configuration.nix
-            inputs.home-manager.nixosModules.home-manager
-          ];
+  flake = with inputs.nixpkgs.lib; {
+          nixosConfigurations = (
+            builtins.listToAttrs (
+              map (params: {
+                name = params.machine.name;
+                value = nixosSystem {
+                  inherit (params.machine) system;
 
-          nixpkgs.config.allowUnfree = true;
-          nixpkgs.overlays = [ ];
-        }
-      )
-    ];
+                  specialArgs = {
+                    inherit params inputs;
+                  };
+
+                  modules = [
+                    {
+                      home-manager = {
+                        users.${params.user.name} = {
+
+                        };
+                      };
+                    }
+                  ]
+                  # Additional modules defined in host.
+                  ++ params.modules;
+                };
+              }) config.filteredHosts
+            )
+          );
   };
 }

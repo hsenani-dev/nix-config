@@ -22,6 +22,7 @@
         # ./modules/nixos/default.nix
         ./modules/hosts
         ./modules/devshell.nix
+        ./modules/treefmt.nix
         # ./hosts
       ];
     };
