@@ -10,6 +10,9 @@
     # desktop environment
     ./de
 
+    # gaming
+    ./gaming
+
     # nix config
     ./nix.nix
 

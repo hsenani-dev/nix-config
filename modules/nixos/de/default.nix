@@ -1,13 +1,21 @@
 { params, ... }:
 {
-  imports = [
-    # lib.mkIf
-    # (params.machine.de.type == "gnome")
-    # ./gnome.nix
-    # lib.mkIf
-    # (params.machine.de.type == "cosmic")
-    ./cosmic.nix
-  ];
+  imports =
+    if params.de.type == "gnome" then
+      [
+        ./gnome.nix
+      ]
+    else if params.de.type == "cosmic" then
+      [
+        ./cosmic.nix
+      ]
+    else
+      [ ];
+  # lib.mkIf
+  # (params.machine.de.type == "gnome")
+  # ./gnome.nix
+  # lib.mkIf
+  # (params.machine.de.type == "cosmic")
 
   config = {
     nixpkgs.hostPlatform = params.machine.system;
