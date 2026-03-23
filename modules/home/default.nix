@@ -79,6 +79,7 @@
             "Noto Color Emoji"
           ];
           monospace = [
+            "Cascadia Mono NF"
             "FiraCode Nerd Font Mono"
             "Font Awesome 6 Free"
             "Font Awesome 6 Brands"
