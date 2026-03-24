@@ -12,7 +12,6 @@
         "toml"
         "nix"
         "git-firefly"
-        # "catppuccin"
       ];
       userSettings = {
         "buffer_font_family" = "Cascadia Code";
@@ -21,11 +20,6 @@
         };
         "ui_font_size" = 16;
         "buffer_font_size" = 15;
-        # "theme" = {
-        #   "mode" = "system";
-        #   "light" = "Catppuccin Latte";
-        #   "dark" = "Catppuccin Mocha";
-        # };
         "load_direnv" = "shell_hook";
       };
     };
