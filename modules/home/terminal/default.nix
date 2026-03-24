@@ -49,6 +49,7 @@ in
   ];
   home = {
     packages = with pkgs; [
+      bc # terminal calculator
       cyme # Modern Unix `lsusb`
       dua # Modern Unix `du`
       duf # Modern Unix `df`
