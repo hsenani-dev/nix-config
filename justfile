@@ -8,6 +8,10 @@ backup_ext := `date +%Y%m%d-%H%M`
 default:
     @just --list --unsorted
 
+# Format files
+format:
+    @nix fmt
+
 # Build OS and Home configurations
 build:
     @just build-host
