@@ -12,6 +12,10 @@ default:
 format:
     @nix fmt
 
+# Run nix repl and load flake
+repl:
+    @nix repl .
+
 # Build OS and Home configurations
 build:
     @just build-host
