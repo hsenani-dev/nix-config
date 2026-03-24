@@ -84,11 +84,6 @@ rec {
       isISO = builtins.substring 0 4 hostname == "iso-";
       isInstall = !isISO;
       isLaptop = false;
-        #hostname != "vader"
-        #&& hostname != "phasma"
-        #&& hostname != "revan"
-        #&& hostname != "malak"
-        #&& hostname != "maul";
       isWorkstation = builtins.isString desktop;
 
       # Generate the Catppuccin palette for this system

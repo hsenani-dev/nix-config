@@ -26,7 +26,7 @@
         ./modules/hosts
         #./modules/home
         ./modules/devshell.nix
-        # ./modules/treefmt.nix
+        ./modules/treefmt.nix
         # ./hosts
       ];
     };
