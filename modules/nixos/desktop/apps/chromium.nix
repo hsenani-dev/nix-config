@@ -1,4 +1,4 @@
-{ ... }:
+{ params, ... }:
 {
   programs = {
     chromium = {
@@ -25,8 +25,8 @@
         "NTPCustomBackgroundEnabled" = false;
         "NTPMiddleSlotAnnouncementVisible" = false;
         # Misc; Downloads
-        "DefaultDownloadDirectory" = "/home/${username}/Downloads";
-        "DownloadDirectory" = "/home/${username}/Downloads";
+        "DefaultDownloadDirectory" = "/home/${params.user.name}/Downloads";
+        "DownloadDirectory" = "/home/${params.user.name}/Downloads";
         "PromptForDownloadLocation" = true;
         # Misc
         "AllowSystemNotifications" = true;
