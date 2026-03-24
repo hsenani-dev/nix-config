@@ -30,3 +30,5 @@ Bring this in. Add to config.hosts. Voila, new host made.
 9. Make a directory importer -> Given a path, return all nix files.
 10. Make helper function for host such that one can just import a module where
     one runs `mkHost` and pass args.
+11. Checkout nh.
+12. Checkout does nix need to reboot?
