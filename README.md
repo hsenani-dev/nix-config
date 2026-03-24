@@ -18,6 +18,7 @@ Bring this in. Add to config.hosts. Voila, new host made.
 ## TODOs
 
 1. Ensure nixpkgs are safe. There is a nixos module that makes them readonly.
+2. Fix readme.
 2. Configure vscode
 3. Configure gnome option
 4. More catppuccin options
@@ -32,3 +33,4 @@ Bring this in. Add to config.hosts. Voila, new host made.
     one runs `mkHost` and pass args.
 11. Checkout nh.
 12. Checkout does nix need to reboot?
+13. Add different config for starship and make it an option.
