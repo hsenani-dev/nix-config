@@ -10,6 +10,8 @@
     ./hosts.nix
     ./hostparams.nix
   ];
+
+  # Modify nixpkgs once for each system.
   perSystem =
     { system, ... }:
     {
@@ -35,6 +37,7 @@
 
           modules = [
             ../nixos
+            # This section ensures the same nixpkgs are used for nixos, devshells, and packages
             inputs.nixpkgs.nixosModules.readOnlyPkgs
             (
               { ... }:

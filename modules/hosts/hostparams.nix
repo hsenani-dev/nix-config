@@ -60,7 +60,6 @@ let
             default = "generic-desktop-x86";
           };
 
-        # TODO: make this an enum of systems.
         system = mkOption {
           type = types.enum config.systems;
           default = "x86_64-linux";
