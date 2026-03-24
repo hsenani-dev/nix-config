@@ -9,6 +9,7 @@
     ./pkgs.nix
     ./terminal
     ./de
+    ./gaming
   ];
 
   config = {
