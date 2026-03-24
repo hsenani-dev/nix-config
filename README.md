@@ -35,3 +35,4 @@ Bring this in. Add to config.hosts. Voila, new host made.
 13. Checkout does nix need to reboot?
 14. Add different config for starship and make it an option.
 15. Add nix aliases.
+16. Add terminal improvements and different terminal than cosmic term.
