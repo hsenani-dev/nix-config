@@ -32,8 +32,8 @@ in
               "type": 2
             },
             "bar": {
-              "charElapsed": "",
-              "charTotal": " "
+              "char.elapsed": "",
+              "char.total": " "
             },
             "key": {
               "width": 6
