@@ -22,12 +22,9 @@
       ];
 
       imports = [
-        # ./modules/nixos/default.nix
         ./modules/hosts
-        #./modules/home
         ./modules/devshell.nix
         ./modules/treefmt.nix
-        # ./hosts
       ];
     };
 }

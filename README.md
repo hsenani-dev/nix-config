@@ -25,3 +25,5 @@ Bring this in. Add to config.hosts. Voila, new host made.
 6. Make helper function for host such that one can just import a module where
    one runs `mkHost` and pass args.
 7. Document better.
+8. Instead of `modules/hosts` importing `nixos`, then having `nixos` import `home`, just have it all imported and use via config.
+9. Make a directory importer -> Given a path, return all nix files.
