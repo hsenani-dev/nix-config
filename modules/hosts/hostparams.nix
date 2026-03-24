@@ -34,12 +34,20 @@ let
 
           email = mkOption {
             type = types.str;
+            description = "Email used to configure git.";
             default = "henry@sinabi.dev";
+          };
+
+          hashedPassword = mkOption {
+            type = types.str;
+            description = "run 'mkpasswd -m sha-512' to generate.";
+            default = "$6$bm9TcqHd1XegNVuI$h0Xm0fOnDYHvtMlh51uvF50yHOS9FWgtrxeTH.1QUtrhknpCytdP6xqvuB5/lfrT9f/lIwKOZLhyCXiuNTzWC0";
           };
         };
 
         machine = {
           name = mkOption {
+            description = "hostname";
             type = types.str;
           };
 
