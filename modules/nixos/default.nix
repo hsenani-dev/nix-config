@@ -10,6 +10,7 @@
 
     # desktop environment
     ./de
+    ./desktop/apps/chromium.nix
 
     # gaming
     ./gaming
