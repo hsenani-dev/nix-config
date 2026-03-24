@@ -13,7 +13,6 @@
       [ ];
 
   config = {
-    nixpkgs.hostPlatform = params.machine.system;
 
     system.stateVersion = params.machine.state-version;
     home-manager.users.${params.user.name} = {

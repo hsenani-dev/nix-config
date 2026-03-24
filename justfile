@@ -8,6 +8,14 @@ backup_ext := `date +%Y%m%d-%H%M`
 default:
     @just --list --unsorted
 
+# Format files
+format:
+    @nix fmt
+
+# Run nix repl and load flake
+repl:
+    @nix repl .
+
 # Build OS and Home configurations
 build:
     @just build-host

@@ -11,8 +11,6 @@
   ];
 
   config = {
-    nixpkgs.hostPlatform = lib.mkForce "x86_64-linux";
-
     boot = {
       loader = {
         systemd-boot.enable = true;

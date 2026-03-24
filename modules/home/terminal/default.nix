@@ -29,7 +29,7 @@ in
     ./dircolors.nix # Terminal colors
     ./direnv.nix # Modern Unix `env`
     # ./eza.nix # Modern Unix `ls`
-    # ./fastfetch.nix # Modern Unix `neofetch`
+    ./fastfetch.nix # Modern Unix `neofetch`
     # ./fd.nix # Modern Unix `find`
     # ./fzf.nix # Terminal fuzzy finder
     # ./gh.nix # Terminal GitHub client`

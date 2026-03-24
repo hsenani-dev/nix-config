@@ -1,4 +1,9 @@
-{ inputs, params, ... }:
+{
+  inputs,
+  params,
+  pkgs,
+  ...
+}:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
@@ -31,6 +36,9 @@
     #     config_location = "${params.machine.flake-location}";
     #   };
     # };
+    environment.systemPackages = [
+      pkgs.chromium
+    ];
 
     users.users.${params.user.name} = {
       isNormalUser = true;
