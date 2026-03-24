@@ -6,7 +6,6 @@
 }:
 {
   imports = [
-    ./pkgs.nix
     ./terminal
     ./de
     ./gaming
