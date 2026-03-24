@@ -18,17 +18,18 @@
 
         push.autoSetupRemote = true;
       };
+      aliases = {
+        ci = "commit";
+        cl = "clone";
+        co = "checkout";
+        puff = "pull --ff-only";
+        purr = "pull --rebase";
+        fucked = "reset --hard";
+        gsu = "submodule update --init --recursive";
+        graph = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+      };
       settings = {
-        aliases = {
-          ci = "commit";
-          cl = "clone";
-          co = "checkout";
-          puff = "pull --ff-only";
-          purr = "pull --rebase";
-          fucked = "reset --hard";
-          gsu = "submodule update --init --recursive";
-          graph = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
-        };
+        fetch.prune = true;
         advice = {
           statusHints = false;
         };
