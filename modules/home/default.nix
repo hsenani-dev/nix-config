@@ -10,6 +10,7 @@
     ./terminal
     ./de
     ./gaming
+    ./desktop
   ];
 
   config = {

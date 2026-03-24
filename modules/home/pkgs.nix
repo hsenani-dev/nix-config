@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    zed-editor
+    # zed-editor
   ];
   programs.chromium.enable = true;
 }
