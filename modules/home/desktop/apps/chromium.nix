@@ -3,6 +3,7 @@
 }:
 {
   programs.chromium = {
+    enable = true;
     extensions = [
       { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # ProtonPass
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # uBlock Origin
