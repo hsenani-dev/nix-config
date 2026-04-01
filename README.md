@@ -69,5 +69,4 @@ just
 1. Checkout nh.
 1. Checkout does nix need to reboot?
 1. Add different config for starship and make it an option.
-1. Add nix aliases.
 1. Configure gnome option
