@@ -12,8 +12,8 @@
     kitty = {
       enable = true;
       font = {
-        name = "FiraCode Nerd Font Mono";
-        size = 16;
+        name = "Cascadia Mono NF";
+        size = 14;
       };
       package = pkgs.kitty;
       settings = {
@@ -22,7 +22,7 @@
         cursor_shape_unfocused = "hollow";
         cursor_stop_blinking_after = 0;
         confirm_os_window_close = 0;
-        hide_window_decorations = false;
+        hide_window_decorations = true;
         scrollbar = "scrolled";
         scrollbar_handle_opacity = 0.50;
         scrollback_lines = 65536;
@@ -106,8 +106,8 @@
     "XTerm*geometry" = "132x50";
     "XTerm.termName" = "xterm-256color";
     "XTerm*internalBorder" = 2;
-    "XTerm*faceName" = "FiraCode Nerd Font Mono:size=14:style=Medium:antialias=true";
-    "XTerm*boldFont" = "FiraCode Nerd Font Mono:size=14:style=Bold:antialias=true";
+    "XTerm*faceName" = "Cascadia Mono NF:size=14:style=Medium:antialias=true";
+    "XTerm*boldFont" = "Cascadia Mono NF:size=14:style=Bold:antialias=true";
     "XTerm*boldColors" = true;
     "XTerm*cursorBlink" = true;
     "XTerm*cursorUnderline" = false;

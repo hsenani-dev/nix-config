@@ -22,8 +22,8 @@ in
 {
   imports = [
     # ./atuin.nix # Modern Unix shell history
-    # ./bat.nix # Modern Unix `cat`
-    # ./bottom.nix # Modern Unix `top`
+    ./bat.nix # Modern Unix `cat`
+    ./bottom.nix # Modern Unix `top`
     # ./btop.nix # Modern Unix `htop`
     # ./cava.nix # Terminal audio visualizer
     ./dircolors.nix # Terminal colors
