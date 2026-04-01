@@ -51,7 +51,6 @@ just
 
 ## TODOs
 
-1. Fix readme.
 1. Configure vscode
 1. More catppuccin options
 1. Make template.
@@ -61,8 +60,6 @@ just
 1. Instead of `modules/hosts` importing `nixos`, then having `nixos` import
    `home`, just have it all imported and use via config.
 1. Make a directory importer -> Given a path, return all nix files.
-1. Make helper function for host such that one can just import a module where
-    one runs `mkHost` and pass args.
 1. Checkout nh.
 1. Checkout does nix need to reboot?
 1. Add different config for starship and make it an option.
