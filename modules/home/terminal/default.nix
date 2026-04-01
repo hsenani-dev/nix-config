@@ -160,7 +160,7 @@ in
     };
     zsh = {
       shellAliases = shellAliases;
-      initExtra = shellExtra;
+      initContent = shellExtra;
     };
   };
 }
