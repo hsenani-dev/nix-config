@@ -42,9 +42,7 @@ in
     # ./rclone.nix # Terminal cloud storage sync
     # ./ripgrep.nix # Modern Unix `grep`
     ./starship.nix # Modern Unix prompt
-    # ./tldr.nix # Modern Unix `man`
-    # ./yazi.nix # Modern Unix `mc`
-    # ./yt-dlp.nix # Terminal YouTube downloader
+    ./tldr.nix # Modern Unix `man`
     # ./zoxide.nix # Modern Unix `cd`
   ];
   home = {

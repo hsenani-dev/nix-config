@@ -22,7 +22,7 @@
         cursor_shape_unfocused = "hollow";
         cursor_stop_blinking_after = 0;
         confirm_os_window_close = 0;
-        hide_window_decorations = true;
+        hide_window_decorations = false;
         scrollbar = "scrolled";
         scrollbar_handle_opacity = 0.50;
         scrollback_lines = 65536;
