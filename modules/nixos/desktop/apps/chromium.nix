@@ -5,10 +5,6 @@
     # - https://chromeenterprise.google/policies/
     # - chromium.enable just enables the Chromium policies.
     enable = true;
-    extensions = [
-      "ghmbeldphafepmbegfdlkpapadhbakde" # ProtonPass
-      "cjpalhdlnbpafiamejdnhcphjbkeiagm" # uBlock Origin
-    ];
     extraOpts = {
       # Misc; privacy and data collection prevention
       "BrowserNetworkTimeQueriesEnabled" = false;
