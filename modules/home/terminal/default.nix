@@ -18,34 +18,109 @@ let
     wormhole = "${pkgs.wormhole-rs}/bin/wormhole-rs";
     weather = "${lib.getExe pkgs.girouette} --quiet";
   };
+  fishShellFunctions = {
+    ns = {
+      body = ''
+        set -l cmd "nix flake show '.?submodules=1#'"
+                  echo "> $cmd"
+                  eval "$cmd"'';
+      description = "nix flake show shortcut - displays packages in a given flake.";
+    };
+    nfu.body = ''
+      set -l cmd "nix flake update $argv"
+      eval "$cmd"
+    '';
+    nb = {
+      body = ''
+        set -l derivation $argv[1]
+        set -l args $argv[2..-1]
+        set -l cmd "nix build --print-build-logs $args '.?submodules=1#$derivation'"
+        echo "> $cmd"
+        eval "$cmd"
+      '';
+      description = "nix build - usage nb <package name> <build args>";
+    };
+    nd = {
+      body = ''
+        set -l cmd "nix develop --print-build-logs '.?submodules=1#$argv'"
+        echo "> $cmd"
+        eval "$cmd"
+      '';
+      description = "nix build - usage nd <package name>";
+    };
+    nr = {
+      body = ''
+        set -l derivation $argv[1]
+        set -l args $argv[2..-1]
+        set -l cmd "nix run --print-build-logs '.?submodules=1#$derivation'"
+        if string length --quiet "$args"
+          set cmd "nix run --print-build-logs '.?submodules=1#$derivation' -- $args"
+        end
+        echo "> $cmd"
+        eval "$cmd"
+      '';
+      description = "nix run - usage: nr <package-name> <run args>";
+    };
+  };
+  shellExtra = ''
+    # nix flake show shortcut - displays packages in a given flake.
+    ns() {
+      local cmd="nix flake show '.?submodules=1#'"
+      echo "> $cmd"
+      eval "$cmd"
+    }
+
+    nfu() {
+      local cmd="nix flake update $@"
+      eval "$cmd"
+    }
+
+    # nix build - usage nb <package name>
+    nb() {
+      arg_array=($@)
+      derivation=''${arg_array[1]}
+      args=''${arg_array[@]:1}
+      local cmd="nix build --print-build-logs ''${args} '.?submodules=1#''${derivation}'"
+      echo "> $cmd"
+      eval "$cmd"
+    }
+
+    nd() {
+      local cmd="nix develop --print-build-logs '.?submodules=1#$@'"
+      echo "> $cmd"
+      eval "$cmd"
+    }
+
+    # nix run - usage: nr <package-name> <args>
+    nr() {
+      arg_array=($@)
+      derivation=''${arg_array[1]}
+      args=''${arg_array[@]:1}
+      if [[ -n ''${args} ]]; then
+        local cmd="nix run --print-build-logs '.?submodules=1#''${derivation}' -- ''${args}"
+      else
+        local cmd="nix run --print-build-logs '.?submodules=1#''${derivation}'"
+      fi
+      echo "> $cmd"
+      eval "$cmd"
+    }
+  '';
 in
 {
   imports = [
-    # ./atuin.nix # Modern Unix shell history
-    # ./bat.nix # Modern Unix `cat`
-    # ./bottom.nix # Modern Unix `top`
-    # ./btop.nix # Modern Unix `htop`
-    # ./cava.nix # Terminal audio visualizer
+    ./bat.nix # Modern Unix `cat`
+    ./bottom.nix # Modern Unix `top`
     ./dircolors.nix # Terminal colors
     ./direnv.nix # Modern Unix `env`
-    # ./eza.nix # Modern Unix `ls`
+    ./eza.nix # Modern Unix `ls`
     ./fastfetch.nix # Modern Unix `neofetch`
-    # ./fd.nix # Modern Unix `find`
-    # ./fzf.nix # Terminal fuzzy finder
-    # ./gh.nix # Terminal GitHub client`
+    ./fd.nix # Modern Unix `find`
+    ./fzf.nix # Terminal fuzzy finder
     ./git.nix # Terminal Git client
-    # ./gpg.nix # Terminal GPG
-    # ./jq.nix # Terminal JSON processor
-    # ./micro.nix # Terminal text editor
     ./neovim.nix
-    # ./pueue.nix # Terminal task manager
-    # ./rclone.nix # Terminal cloud storage sync
-    # ./ripgrep.nix # Modern Unix `grep`
     ./starship.nix # Modern Unix prompt
-    # ./tldr.nix # Modern Unix `man`
-    # ./yazi.nix # Modern Unix `mc`
-    # ./yt-dlp.nix # Terminal YouTube downloader
-    # ./zoxide.nix # Modern Unix `cd`
+    ./tldr.nix # Modern Unix `man`
+    ./zoxide.nix # Modern Unix `cd`
   ];
   home = {
     packages = with pkgs; [
@@ -75,8 +150,17 @@ in
   };
 
   programs = {
-    bash.shellAliases = shellAliases;
-    fish.shellAliases = shellAliases;
-    zsh.shellAliases = shellAliases;
+    bash = {
+      shellAliases = shellAliases;
+      initExtra = shellExtra;
+    };
+    fish = {
+      shellAliases = shellAliases;
+      functions = fishShellFunctions;
+    };
+    zsh = {
+      shellAliases = shellAliases;
+      initContent = shellExtra;
+    };
   };
 }

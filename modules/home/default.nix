@@ -108,6 +108,7 @@
           set fish_greeting ""
         '';
       };
+      bash.enable = true;
       home-manager.enable = true;
     };
   };

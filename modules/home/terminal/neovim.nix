@@ -1,5 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
+  catppuccin.nvim.enable = config.programs.neovim.enable;
+
   programs.neovim = {
     enable = true;
 
