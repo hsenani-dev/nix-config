@@ -21,29 +21,19 @@ let
 in
 {
   imports = [
-    # ./atuin.nix # Modern Unix shell history
     ./bat.nix # Modern Unix `cat`
     ./bottom.nix # Modern Unix `top`
-    # ./btop.nix # Modern Unix `htop`
-    # ./cava.nix # Terminal audio visualizer
     ./dircolors.nix # Terminal colors
     ./direnv.nix # Modern Unix `env`
-    # ./eza.nix # Modern Unix `ls`
+    ./eza.nix # Modern Unix `ls`
     ./fastfetch.nix # Modern Unix `neofetch`
     # ./fd.nix # Modern Unix `find`
-    # ./fzf.nix # Terminal fuzzy finder
-    # ./gh.nix # Terminal GitHub client`
+    ./fzf.nix # Terminal fuzzy finder
     ./git.nix # Terminal Git client
-    # ./gpg.nix # Terminal GPG
-    # ./jq.nix # Terminal JSON processor
-    # ./micro.nix # Terminal text editor
     ./neovim.nix
-    # ./pueue.nix # Terminal task manager
-    # ./rclone.nix # Terminal cloud storage sync
-    # ./ripgrep.nix # Modern Unix `grep`
     ./starship.nix # Modern Unix prompt
     ./tldr.nix # Modern Unix `man`
-    # ./zoxide.nix # Modern Unix `cd`
+    ./zoxide.nix # Modern Unix `cd`
   ];
   home = {
     packages = with pkgs; [
