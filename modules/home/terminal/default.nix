@@ -27,7 +27,7 @@ in
     ./direnv.nix # Modern Unix `env`
     ./eza.nix # Modern Unix `ls`
     ./fastfetch.nix # Modern Unix `neofetch`
-    # ./fd.nix # Modern Unix `find`
+    ./fd.nix # Modern Unix `find`
     ./fzf.nix # Terminal fuzzy finder
     ./git.nix # Terminal Git client
     ./neovim.nix
