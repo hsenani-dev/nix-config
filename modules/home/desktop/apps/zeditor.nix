@@ -14,7 +14,7 @@
         "git-firefly"
       ];
       userSettings = {
-        "buffer_font_family" = "Cascadia Mono NF";
+        "buffer_font_family" = "Cascadia Code NF";
         "git_panel" = {
           "tree_view" = false;
         };
