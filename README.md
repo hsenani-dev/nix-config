@@ -60,6 +60,7 @@ just
    one runs `mkHost` and pass args.
 1. Document better.
 1. Add checks / better testing.
+1. Add ci after item above.
 1. Checkout nh.
 1. Checkout does nix need to reboot?
 1. Add different config for starship and make it an option.
