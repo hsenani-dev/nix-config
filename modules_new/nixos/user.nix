@@ -2,17 +2,17 @@
 {
   flake.modules = {
     nixos.base =
-      { config, ... }:
+      { params, ... }:
       {
-        # users.users.${config.user.name} = {
-        #   isNormalUser = true;
-        #   description = config.user.display-name;
-        #   hashedPassword = config.user.hashedPassword;
-        #   extraGroups = [
-        #     "wheel"
-        #     "dialout"
-        #   ];
-        # };
+        users.users.${params.user.name} = {
+          isNormalUser = true;
+          description = params.user.display-name;
+          hashedPassword = params.user.hashedPassword;
+          extraGroups = [
+            "wheel"
+            "dialout"
+          ];
+        };
       };
   };
 }

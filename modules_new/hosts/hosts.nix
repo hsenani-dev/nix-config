@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  config.configurations.hosts.nixos-home = {
+  configurations.hosts.nixos-home = {
     de.type = "cosmic";
     gaming.enable = true;
 

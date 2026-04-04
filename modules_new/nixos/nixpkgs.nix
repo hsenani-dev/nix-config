@@ -1,6 +1,5 @@
 {
   withSystem,
-  config,
   inputs,
   ...
 }:
@@ -28,10 +27,9 @@
 
     # Use the configured pkgs from perSystem
     flake.modules.nixos.base =
-      { config, ... }:
+      { system, ... }:
       {
-        # nixpkgs.pkgs = withSystem config.machine.system (
-        nixpkgs.pkgs = withSystem "x86_64-linux" (
+        nixpkgs.pkgs = withSystem system (
           { pkgs, ... }: # perSystem module arguments
           pkgs
         );

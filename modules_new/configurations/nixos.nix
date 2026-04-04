@@ -11,6 +11,11 @@
     name: params:
     lib.nixosSystem {
 
+      specialArgs = {
+        inherit params inputs;
+        inherit (params.machine) system;
+      };
+
       modules = [
         params.module
       ];
