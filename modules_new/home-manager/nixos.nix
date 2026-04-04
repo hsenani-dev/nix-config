@@ -5,7 +5,7 @@
 }:
 {
   flake.modules.nixos.base =
-    { params, ... }:
+    { params, lib, ... }:
     {
       imports = [ inputs.home-manager.nixosModules.home-manager ];
 
@@ -20,7 +20,9 @@
             )
             inputs.catppuccin.homeModules.catppuccin
             config.flake.modules.homeManager.base
-          ];
+          ]
+          ++ lib.optionals (params.de.type == "cosmic") [ config.flake.modules.homeManager.cosmic ]
+          ++ lib.optionals (params.gaming.enable) [ config.flake.modules.homeManager.gaming ];
         };
 
         useGlobalPkgs = true;

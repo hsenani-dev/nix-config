@@ -78,6 +78,11 @@ let
           };
         };
 
+        gaming = {
+          enable = mkEnableOption "enables gaming related applications and services";
+          default = false;
+        };
+
         module = mkOption {
           type = types.deferredModule;
         };
