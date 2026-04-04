@@ -1,7 +1,11 @@
-{ ... }:
 {
-  flake.modules = {
-    nixos.base =
+  flake = {
+    meta.owner = {
+      email = "henry@sinabi.dev";
+      name = "Henry Senanian";
+    };
+
+    modules.nixos.base =
       { params, ... }:
       {
         users.users.${params.user.name} = {

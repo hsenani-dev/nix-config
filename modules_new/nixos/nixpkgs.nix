@@ -4,11 +4,11 @@
   ...
 }:
 {
-  # imports = [
-  #   # This import ensures the same nixpkgs are used for nixos, devshells, and packages
-  #   # https://flake.parts/system#approach-2-configure-pkgs-once-in-persystem
-  #   inputs.nixpkgs.nixosModules.readOnlyPkgs
-  # ];
+  imports = [
+    # This import ensures the same nixpkgs are used for nixos, devshells, and packages
+    # https://flake.parts/system#approach-2-configure-pkgs-once-in-persystem
+    inputs.nixpkgs.nixosModules.readOnlyPkgs
+  ];
 
   config = {
     # Modify nixpkgs once for each system.
