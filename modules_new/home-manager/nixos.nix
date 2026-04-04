@@ -12,6 +12,12 @@
       home-manager = {
         users.${params.user.name} = {
           imports = [
+            (
+              { osConfig, ... }:
+              {
+                home.stateVersion = osConfig.system.stateVersion;
+              }
+            )
             inputs.catppuccin.homeModules.catppuccin
             config.flake.modules.homeManager.base
           ];
