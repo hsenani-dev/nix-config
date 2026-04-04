@@ -1,4 +1,3 @@
-{ config, ... }:
 {
   flake.modules.homeManager.base =
     { params, ... }:
@@ -8,6 +7,5 @@
         homeDirectory = "/home/${params.user.name}";
       };
       programs.home-manager.enable = true;
-      systemd.user.startServices = "sd-switch";
     };
 }
