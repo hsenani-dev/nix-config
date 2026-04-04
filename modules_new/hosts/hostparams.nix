@@ -82,9 +82,8 @@ let
           enable = mkEnableOption "enables gaming related applications and services";
         };
 
-        modules = mkOption {
-          type = types.listOf types.anything;
-          default = [ ];
+        module = mkOption {
+          type = types.deferredModule;
         };
       };
     }
