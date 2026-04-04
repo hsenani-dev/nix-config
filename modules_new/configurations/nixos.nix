@@ -36,12 +36,12 @@
             # ../nixos
             # This section ensures the same nixpkgs are used for nixos, devshells, and packages
             # https://flake.parts/system#approach-2-configure-pkgs-once-in-persystem
-            # inputs.nixpkgs.nixosModules.readOnlyPkgs
+            inputs.nixpkgs.nixosModules.readOnlyPkgs
             (
               { ... }:
               {
                 # Use the configured pkgs from perSystem
-                nixpkgs.pkgs = withSystem "x86_64-linux" (
+                nixpkgs.pkgs = withSystem params.machine.system (
                   { pkgs, ... }: # perSystem module arguments
                   pkgs
                 );
@@ -51,7 +51,7 @@
           # Additional modules defined in host.
           ++ params.modules;
         };
-      }) config.hosts
+      }) config.flake.hosts
     )
   );
 }

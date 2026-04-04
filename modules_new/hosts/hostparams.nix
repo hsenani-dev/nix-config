@@ -88,10 +88,8 @@ let
   };
 in
 {
-  options = {
-    hosts = mkOption {
-      type = types.listOf hostparams;
-      default = [ ];
-    };
+  options.flake.hosts = mkOption {
+    type = types.listOf hostparams;
+    default = [ ];
   };
 }

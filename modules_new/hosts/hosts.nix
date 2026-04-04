@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  config.hosts = [
+  config.flake.hosts = [
     {
       machine.name = "nixos-home";
       de.type = "cosmic";
