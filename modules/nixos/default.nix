@@ -36,9 +36,9 @@
     #     config_location = "${params.machine.flake-location}";
     #   };
     # };
-    environment.systemPackages = [
-      pkgs.chromium
-    ];
+    # environment.systemPackages = [
+    #   pkgs.chromium
+    # ];
 
     # users.users.${params.user.name} = {
     #   isNormalUser = true;
