@@ -21,37 +21,33 @@
       };
     };
 
-  config.flake.nixosConfigurations = (
-    builtins.listToAttrs (
-      lib.map (params: {
-        name = params.machine.name;
-        value = lib.nixosSystem {
+  config.flake.nixosConfigurations = lib.mapAttrs (
+    name: params:
+    lib.nixosSystem {
 
-          specialArgs = {
-            inherit params inputs;
-            inherit (params.machine) system;
-          };
+      specialArgs = {
+        inherit params inputs;
+        inherit (params.machine) system;
+      };
 
-          modules = [
-            # ../nixos
-            # This section ensures the same nixpkgs are used for nixos, devshells, and packages
-            # https://flake.parts/system#approach-2-configure-pkgs-once-in-persystem
-            inputs.nixpkgs.nixosModules.readOnlyPkgs
-            (
-              { ... }:
-              {
-                # Use the configured pkgs from perSystem
-                nixpkgs.pkgs = withSystem params.machine.system (
-                  { pkgs, ... }: # perSystem module arguments
-                  pkgs
-                );
-              }
-            )
-          ]
-          # Additional modules defined in host.
-          ++ params.modules;
-        };
-      }) config.flake.hosts
-    )
-  );
+      modules = [
+        # ../nixos
+        # This section ensures the same nixpkgs are used for nixos, devshells, and packages
+        # https://flake.parts/system#approach-2-configure-pkgs-once-in-persystem
+        inputs.nixpkgs.nixosModules.readOnlyPkgs
+        (
+          { ... }:
+          {
+            # Use the configured pkgs from perSystem
+            nixpkgs.pkgs = withSystem params.machine.system (
+              { pkgs, ... }: # perSystem module arguments
+              pkgs
+            );
+          }
+        )
+      ]
+      # Additional modules defined in host.
+      ++ params.modules;
+    }
+  ) config.flake.hosts;
 }
