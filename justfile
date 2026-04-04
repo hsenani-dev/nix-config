@@ -20,7 +20,11 @@ repl:
 build:
     @just build-host
 
-# Build OS and Home configurations
+# Test OS and Home configurations
+test:
+    @just test-host
+
+# Check OS and Home configurations
 check:
     @nix flake check --show-trace
 
@@ -53,11 +57,18 @@ build-host hostname=current_hostname:
     #!/usr/bin/env bash
     set -euo pipefail
     echo "NixOS  Building: {{ hostname }}"
-    sudo nixos-rebuild switch --flake $HOME/workspace/nix-config#{{ hostname }}
+    nixos-rebuild build --flake $HOME/workspace/nix-config#{{ hostname }}
+
+# Test OS configuration
+test-host hostname=current_hostname:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    echo "NixOS  Testing: {{ hostname }}"
+    nixos-rebuild test --sudo --flake $HOME/workspace/nix-config#{{ hostname }}
 
 # Switch OS configuration
 switch-host hostname=current_hostname:
     #!/usr/bin/env bash
     set -euo pipefail
     echo "NixOS  Switching: {{ hostname }}"
-    sudo nixos-rebuild switch --flake $HOME/workspace/nix-config#{{ hostname }}
+    nixos-rebuild switch --sudo --flake $HOME/workspace/nix-config#{{ hostname }}
