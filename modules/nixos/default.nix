@@ -5,29 +5,29 @@
   ...
 }:
 {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-    inputs.catppuccin.nixosModules.catppuccin
-    # inputs.nixos-cli.nixosModules.nixos-cli
+  # imports = [
+  #   inputs.home-manager.nixosModules.home-manager
+  #   inputs.catppuccin.nixosModules.catppuccin
+  #   # inputs.nixos-cli.nixosModules.nixos-cli
 
-    # hardware
-    ./machine
+  #   # hardware
+  #   ./machine
 
-    # desktop environment
-    ./de
-    ./desktop/apps/chromium.nix
+  #   # desktop environment
+  #   ./de
+  #   ./desktop/apps/chromium.nix
 
-    # gaming
-    ./gaming
+  #   # gaming
+  #   ./gaming
 
-    # nix config
-    ./nix.nix
+  #   # nix config
+  #   ./nix.nix
 
-    # cli
-    ./cli.nix
-    ./locale.nix
-    ./networking.nix
-  ];
+  #   # cli
+  #   ./cli.nix
+  #   ./locale.nix
+  #   ./networking.nix
+  # ];
 
   config = {
     # programs.nixos-cli = {

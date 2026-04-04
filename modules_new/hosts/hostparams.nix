@@ -91,7 +91,7 @@ let
   );
 in
 {
-  options.flake.hosts = mkOption {
+  options.configurations.hosts = mkOption {
     type = types.lazyAttrsOf hostparams;
   };
 }

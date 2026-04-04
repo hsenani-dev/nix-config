@@ -1,7 +1,6 @@
 { config, ... }:
 {
-  config.flake.hosts.nixos-home = {
-    machine.name = "nixos-home";
+  config.configurations.hosts.nixos-home = {
     de.type = "cosmic";
     gaming.enable = true;
 

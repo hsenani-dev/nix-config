@@ -49,5 +49,5 @@
       # Additional modules defined in host.
       ++ params.modules;
     }
-  ) config.flake.hosts;
+  ) config.configurations.hosts;
 }
