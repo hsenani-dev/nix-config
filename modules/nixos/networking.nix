@@ -1,17 +1,25 @@
-{ pkgs, params, ... }:
 {
-  networking.hostName = params.machine.name;
-  networking.networkmanager.enable = true;
+  flake.modules.nixos.base =
+    {
+      params,
+      pkgs,
+      name,
+      ...
+    }:
+    {
+      networking.hostName = name;
+      networking.networkmanager.enable = true;
 
-  services.openssh.enable = true;
+      services.openssh.enable = true;
 
-  programs.wireshark = {
-    enable = true;
-    usbmon.enable = true;
-    package = pkgs.wireshark;
-  };
-  users.users.${params.user.name}.extraGroups = [
-    "networkmanager"
-    "wireshark"
-  ];
+      programs.wireshark = {
+        enable = true;
+        usbmon.enable = true;
+        package = pkgs.wireshark;
+      };
+      users.users.${params.user.name}.extraGroups = [
+        "networkmanager"
+        "wireshark"
+      ];
+    };
 }

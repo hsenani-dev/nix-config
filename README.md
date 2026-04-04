@@ -13,10 +13,7 @@ Configurations can easily be added by importing a module that defines a host
 with the minimum required defintions shown below:
 
 ```nix
-config.hosts = [
-    {
-      # hostname
-      machine.name = "hostname";
+configurations.hosts.hostname = {
       
       # desktop environment selection
       de.type = "desktop environment";
@@ -29,12 +26,11 @@ config.hosts = [
           fileSystems."/boot" = { };
         }
       ];
-    }
-  ];
+    };
 ```
 
 Host module options are available [here](./modules/hosts/hostparams.nix). The
-hosts file contains the default host [here](./modules/hosts/hosts.nix).
+nixos-home folder contains the default host [here](./modules/hosts/nixos-home).
 
 ## Apply
 
@@ -63,9 +59,8 @@ just
 1. Make helper function for host such that one can just import a module where
    one runs `mkHost` and pass args.
 1. Document better.
-1. Instead of `modules/hosts` importing `nixos`, then having `nixos` import
-   `home`, just have it all imported and use via config.
-1. Make a directory importer -> Given a path, return all nix files.
+1. Add checks / better testing.
+1. Add ci after item above.
 1. Checkout nh.
 1. Checkout does nix need to reboot?
 1. Add different config for starship and make it an option.

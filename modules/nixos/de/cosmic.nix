@@ -1,5 +1,7 @@
 {
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
-  services.system76-scheduler.enable = true;
+  flake.modules.nixos.cosmic = {
+    services.desktopManager.cosmic.enable = true;
+    services.displayManager.cosmic-greeter.enable = true;
+    services.system76-scheduler.enable = true;
+  };
 }

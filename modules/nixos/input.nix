@@ -1,8 +1,10 @@
 {
-  services.xserver = {
-    xkb.layout = "us";
-    xkb.variant = "";
+  flake.modules.nixos.base = {
+    services.xserver = {
+      xkb.layout = "us";
+      xkb.variant = "";
+    };
+    services.libinput.enable = true;
+    services.libinput.mouse.accelProfile = "flat";
   };
-  services.libinput.enable = true;
-  services.libinput.mouse.accelProfile = "flat";
 }
