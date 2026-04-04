@@ -1,20 +1,14 @@
 {
-  # config,
-  pkgs,
-  lib,
-  inputs,
-  ...
-}:
-{
   flake.modules.nixos.base =
     {
       config,
       modulesPath,
+      pkgs,
+      lib,
       ...
     }:
     {
       imports = [
-        # inputs.catppuccin.nixosModules.catppuccin
         (modulesPath + "/installer/scan/not-detected.nix")
       ];
 
@@ -54,7 +48,7 @@
         extraModulePackages = [ ];
       };
 
-      # catppuccin.plymouth.enable = config.boot.plymouth.enable;
+      catppuccin.plymouth.enable = config.boot.plymouth.enable;
 
       # CPU
       hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

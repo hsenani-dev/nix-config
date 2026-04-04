@@ -1,13 +1,13 @@
 { params, ... }:
 {
-  imports = [
-    # lib.mkIf
-    # (params.machine.type == "generic-desktop-x86")
-    ./generic.nix
-  ];
+  # imports = [
+  #   # lib.mkIf
+  #   # (params.machine.type == "generic-desktop-x86")
+  #   ./generic.nix
+  # ];
 
   config = {
-    system.stateVersion = params.machine.state-version;
+    # system.stateVersion = params.machine.state-version;
     home-manager.users.${params.user.name} = {
       config = {
         home.stateVersion = params.machine.state-version;

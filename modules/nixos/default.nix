@@ -40,15 +40,15 @@
       pkgs.chromium
     ];
 
-    users.users.${params.user.name} = {
-      isNormalUser = true;
-      description = params.user.display-name;
-      hashedPassword = params.user.hashedPassword;
-      extraGroups = [
-        "wheel"
-        "dialout"
-      ];
-    };
+    # users.users.${params.user.name} = {
+    #   isNormalUser = true;
+    #   description = params.user.display-name;
+    #   hashedPassword = params.user.hashedPassword;
+    #   extraGroups = [
+    #     "wheel"
+    #     "dialout"
+    #   ];
+    # };
 
     home-manager = {
       users.${params.user.name} = {

@@ -13,6 +13,7 @@
       specialArgs = {
         inherit params inputs;
         inherit (params.machine) system;
+        inherit name;
       };
 
       modules = [
