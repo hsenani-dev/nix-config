@@ -1,4 +1,11 @@
-{ config, ... }:
+{
+  config,
+  lib,
+  ...
+}:
+let
+  deType = config.configurations.hosts.nixos-home.de.type;
+in
 {
   configurations.hosts.nixos-home.module = {
     imports =
@@ -7,6 +14,7 @@
         base
         gaming
       ]
-      ++ lib.optionals (configurations.hosts.nixos-home.de.type == "cosmic") [ cosmic ];
+      ++ lib.optionals (deType == "cosmic") [ cosmic ]
+      ++ lib.optionals (deType == "gnome") [ gnome ];
   };
 }
