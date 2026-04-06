@@ -25,15 +25,17 @@
   outputs =
     inputs:
 
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } rec {
       debug = true;
       systems = [
         "x86_64-linux"
         "aarch64-darwin"
       ];
 
+      flake.flakeModules.default = (inputs.import-tree ./modules);
+
       imports = [
-        (inputs.import-tree ./modules)
+        flake.flakeModules.default
       ];
 
       _module.args.rootPath = ./.;
