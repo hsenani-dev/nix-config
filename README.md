@@ -50,18 +50,3 @@ configuration application. To start enter:
 ```bash
 just
 ```
-
-## TODOs
-
-1. Configure vscode
-1. More catppuccin options
-1. Make template.
-1. Make helper function for host such that one can just import a module where
-   one runs `mkHost` and pass args.
-1. Document better.
-1. Add checks / better testing.
-1. Add ci after item above.
-1. Checkout nh.
-1. Checkout does nix need to reboot?
-1. Add different config for starship and make it an option.
-1. Configure gnome option
