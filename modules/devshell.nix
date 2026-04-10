@@ -13,6 +13,7 @@
           nixd # Nix language server
           nil
           ruff
+          nh
         ];
       };
     };

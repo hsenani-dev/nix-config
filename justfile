@@ -57,18 +57,18 @@ build-host hostname=current_hostname:
     #!/usr/bin/env bash
     set -euo pipefail
     echo "NixOS  Building: {{ hostname }}"
-    nixos-rebuild build --flake $HOME/workspace/nix-config#{{ hostname }}
-
-# Test OS configuration
-test-host hostname=current_hostname:
-    #!/usr/bin/env bash
-    set -euo pipefail
-    echo "NixOS  Testing: {{ hostname }}"
-    nixos-rebuild test --sudo --flake $HOME/workspace/nix-config#{{ hostname }}
+    nh os build . --hostname "{{ hostname }}"
 
 # Switch OS configuration
 switch-host hostname=current_hostname:
     #!/usr/bin/env bash
     set -euo pipefail
     echo "NixOS  Switching: {{ hostname }}"
-    nixos-rebuild switch --sudo --flake $HOME/workspace/nix-config#{{ hostname }}
+    nh os switch . --hostname "{{ hostname }}"
+
+# Boot OS configuration (activate on next reboot)
+boot-host hostname=current_hostname:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    echo "NixOS ♺  Booting: {{ hostname }}"
+    nh os boot . --hostname "{{ hostname }}"
