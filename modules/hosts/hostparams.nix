@@ -74,7 +74,7 @@ let
 
           flake-location = mkOption {
             type = types.str;
-            default = "/home/${config.user.name}/config";
+            default = "/home/${config.user.name}/workspace/nix-config";
           };
         };
 
