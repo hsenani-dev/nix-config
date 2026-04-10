@@ -52,16 +52,6 @@ update:
     @echo "flake.lock 󱄅 Updating "
     nix flake update
 
-# Build Home configuration
-build-home username=current_username hostname=current_hostname:
-    @echo "Home Manager  Building: {{ username }}@{{ hostname }}"
-    @nh home build . --configuration "{{ username }}@{{ hostname }}"
-
-# Switch Home configuration
-switch-home username=current_username hostname=current_hostname:
-    @echo "Home Manager  Switching: {{ username }}@{{ hostname }}"
-    @nh home switch . --configuration "{{ username }}@{{ hostname }}" --backup-extension {{ backup_ext }}
-
 # Build OS configuration
 build-host hostname=current_hostname:
     #!/usr/bin/env bash
