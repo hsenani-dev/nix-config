@@ -52,23 +52,33 @@ update:
     @echo "flake.lock 󱄅 Updating "
     nix flake update
 
+# Build Home configuration
+build-home username=current_username hostname=current_hostname:
+    @echo "Home Manager  Building: {{ username }}@{{ hostname }}"
+    @nh home build . --configuration "{{ username }}@{{ hostname }}"
+
+# Switch Home configuration
+switch-home username=current_username hostname=current_hostname:
+    @echo "Home Manager  Switching: {{ username }}@{{ hostname }}"
+    @nh home switch . --configuration "{{ username }}@{{ hostname }}" --backup-extension {{ backup_ext }}
+
 # Build OS configuration
 build-host hostname=current_hostname:
     #!/usr/bin/env bash
     set -euo pipefail
     echo "NixOS  Building: {{ hostname }}"
-    nixos-rebuild build --flake $HOME/workspace/nix-config#{{ hostname }}
-
-# Test OS configuration
-test-host hostname=current_hostname:
-    #!/usr/bin/env bash
-    set -euo pipefail
-    echo "NixOS  Testing: {{ hostname }}"
-    nixos-rebuild test --sudo --flake $HOME/workspace/nix-config#{{ hostname }}
+    nh os build . --hostname "{{ hostname }}"
 
 # Switch OS configuration
 switch-host hostname=current_hostname:
     #!/usr/bin/env bash
     set -euo pipefail
     echo "NixOS  Switching: {{ hostname }}"
-    nixos-rebuild switch --sudo --flake $HOME/workspace/nix-config#{{ hostname }}
+    nh os switch . --hostname "{{ hostname }}"
+
+# Boot OS configuration (activate on next reboot)
+boot-host hostname=current_hostname:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    echo "NixOS ♺  Booting: {{ hostname }}"
+    nh os boot . --hostname "{{ hostname }}"
