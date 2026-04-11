@@ -82,3 +82,31 @@ jobs:
             done
             exit 1
           fi
+
+  # ──────────────────────────────────────────────
+  # NixOS Configurations (per-host)
+  # ──────────────────────────────────────────────
+  nixos:
+    name: NixOS 🐧 ${{ matrix.name }}
+    needs: inventory
+    if: needs.inventory.outputs.has_nixos == 'true'
+    runs-on: ${{ matrix.runner }}
+    permissions:
+      id-token: write
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        name: [nixos-home]
+        include:
+          - runner: ubuntu-latest
+            name: nixos-home
+    steps:
+      - uses: actions/checkout@v6
+      - uses: DeterminateSystems/determinate-nix-action@v3
+        with:
+          extra-conf: |
+            eval-cores = 0
+      - name: Build NixOS ${{ matrix.name }}
+        run: |
+          nix build ".#nixosConfigurations.${{ matrix.name }}.config.system.build.toplevel" --no-link -L
