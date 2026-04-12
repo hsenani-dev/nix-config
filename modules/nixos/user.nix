@@ -15,6 +15,7 @@
           extraGroups = [
             "wheel"
             "dialout"
+            "uaccess"
           ];
         };
       };
