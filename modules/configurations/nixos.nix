@@ -10,6 +10,7 @@
     name: params:
     lib.nixosSystem {
 
+      # Args to be forwarded to modules.
       specialArgs = {
         inherit params inputs;
         inherit (params.machine) system;

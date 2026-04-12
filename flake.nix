@@ -32,6 +32,7 @@
         "aarch64-darwin"
       ];
 
+      # Needed for external coonsumption.
       flake.flakeModules.default = (inputs.import-tree ./modules);
 
       imports = [
