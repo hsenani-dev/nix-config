@@ -1,12 +1,12 @@
 {
   flake.modules.homeManager.base =
     {
-      config,
+      pkgs,
       ...
     }:
     {
-      programs = {
-        transmission.enable = true;
-      };
+      home.packages = [
+        pkgs.transmission_4
+      ];
     };
 }
