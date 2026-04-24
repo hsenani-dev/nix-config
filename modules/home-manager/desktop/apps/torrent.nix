@@ -6,7 +6,7 @@
     }:
     {
       programs = {
-        torrent.enable = true;
+        transmission.enable = true;
       };
     };
 }
