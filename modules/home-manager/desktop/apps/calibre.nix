@@ -1,12 +1,7 @@
 {
-  flake.modules.homeManager.base =
-    {
-      config,
-      ...
-    }:
-    {
-      programs = {
-        calibre.enable = true;
-      };
+  flake.modules.homeManager.base = {
+    programs = {
+      calibre.enable = true;
     };
+  };
 }
