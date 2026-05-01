@@ -6,7 +6,7 @@
     }:
     {
       home.packages = [
-        pkgs.transmission_4
+        pkgs.transmission_4-gtk
       ];
     };
 }
