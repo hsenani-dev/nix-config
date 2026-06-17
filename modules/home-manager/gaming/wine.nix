@@ -5,6 +5,7 @@
       home.packages = with pkgs; [
         protontricks
         wine64
+        lutris
       ];
     };
 }
