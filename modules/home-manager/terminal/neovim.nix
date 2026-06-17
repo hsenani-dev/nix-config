@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.base =
-    { pkgs, config, ... }:
+    { pkgs, ... }:
     {
       # catppuccin.nvim.enable = config.programs.neovim.enable;
 
