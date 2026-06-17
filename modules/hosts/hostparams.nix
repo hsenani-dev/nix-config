@@ -69,7 +69,7 @@ let
 
           state-version = mkOption {
             type = types.str;
-            default = "26.05";
+            default = "25.11";
           };
 
           flake-location = mkOption {
