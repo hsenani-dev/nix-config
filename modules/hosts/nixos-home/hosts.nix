@@ -1,6 +1,6 @@
 {
   configurations.hosts.nixos-home = {
-    de.type = "gnome";
+    de.type = "cosmic";
     gaming.enable = true;
   };
 }

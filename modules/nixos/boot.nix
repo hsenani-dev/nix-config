@@ -43,7 +43,7 @@
           verbose = false;
         };
 
-        kernelModules = [ "kvm-amd" ];
+        kernelModules = [ "amdgpu" ];
         kernelPackages = pkgs.linuxPackages_latest;
         extraModulePackages = [ ];
       };
@@ -59,5 +59,9 @@
         enable = true;
         enable32Bit = true;
       };
+
+      hardware.amdgpu.initrd.enable = true;
+
+      services.xserver.videoDrivers = [ "amdgpu" ];
     };
 }
