@@ -13,6 +13,7 @@
         cosmic-ext-calculator
         cosmic-ext-ctl
         cosmic-ext-tweaks
+        cosmic-monitor
         gnome-calculator # cosmic calculator is not quite there.
       ];
     };
