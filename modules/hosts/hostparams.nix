@@ -55,7 +55,10 @@ let
 
           type =
             let
-              machineTypes = [ "generic-desktop-x86" ];
+              machineTypes = [
+                "generic-desktop-x86"
+                "dell-precision-5690"
+              ];
             in
             mkOption {
               type = types.enum machineTypes;
