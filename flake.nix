@@ -13,6 +13,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # base hardware configs to easily inherit from
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+
     import-tree.url = "github:vic/import-tree";
 
     treefmt-nix.url = "github:numtide/treefmt-nix";

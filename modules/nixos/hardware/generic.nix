@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.base =
+  flake.modules.nixos.generic-hw =
     {
       config,
       modulesPath,
