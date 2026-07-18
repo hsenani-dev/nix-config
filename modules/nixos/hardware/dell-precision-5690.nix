@@ -47,7 +47,7 @@
         };
 
         kernelModules = [ "kvm-intel" ];
-        boot.kernelPackages = pkgs.linuxPackages;
+        kernelPackages = pkgs.linuxPackages;
       };
 
       catppuccin.plymouth.enable = config.boot.plymouth.enable;
