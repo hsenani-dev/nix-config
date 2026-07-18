@@ -19,7 +19,7 @@
     import-tree.url = "github:vic/import-tree";
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
-    # nixos-cli.url = "github:nix-community/nixos-cli";
+
     catppuccin = {
       url = "github:catppuccin/nix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
