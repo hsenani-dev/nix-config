@@ -24,6 +24,8 @@
       url = "github:catppuccin/nix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
   };
   outputs =
     inputs:

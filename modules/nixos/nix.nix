@@ -1,7 +1,10 @@
 {
   flake.modules.nixos.base =
-    { params, ... }:
+    { params, inputs, ... }:
     {
+      imports = [
+        inputs.determinate.nixosModules.default
+      ];
       nix = {
         # Run garbage collect every other week
         gc = {
