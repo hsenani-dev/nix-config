@@ -36,7 +36,7 @@
           body = ''
             set -l derivation $argv[1]
             set -l args $argv[2..-1]
-            set -l cmd "nix build --print-build-logs $args '.?submodules=1#$derivation'"
+            set -l cmd "${pkgs.nom} build --print-build-logs $args '.?submodules=1#$derivation'"
             echo "> $cmd"
             eval "$cmd"
           '';
