@@ -36,7 +36,7 @@
           body = ''
             set -l derivation $argv[1]
             set -l args $argv[2..-1]
-            set -l cmd "${lib.getExe pkgs.nom} build $args '.?submodules=1#$derivation'"
+            set -l cmd "${lib.getExe pkgs.nix-output-monitor} build $args '.?submodules=1#$derivation'"
             echo "> $cmd"
             eval "$cmd"
           '';
@@ -44,7 +44,7 @@
         };
         nd = {
           body = ''
-            set -l cmd "${lib.getExe pkgs.nom} develop '.?submodules=1#$argv'"
+            set -l cmd "${lib.getExe pkgs.nix-output-monitor} develop '.?submodules=1#$argv'"
             echo "> $cmd"
             eval "$cmd"
           '';
@@ -82,13 +82,13 @@
           arg_array=($@)
           derivation=''${arg_array[1]}
           args=''${arg_array[@]:1}
-          local cmd="${lib.getExe pkgs.nom} build ''${args} '.?submodules=1#''${derivation}'"
+          local cmd="${lib.getExe pkgs.nix-output-monitor} build ''${args} '.?submodules=1#''${derivation}'"
           echo "> $cmd"
           eval "$cmd"
         }
 
         nd() {
-          local cmd="${lib.getExe pkgs.nom} develop '.?submodules=1#$@'"
+          local cmd="${lib.getExe pkgs.nix-output-monitor} develop '.?submodules=1#$@'"
           echo "> $cmd"
           eval "$cmd"
         }
@@ -133,7 +133,7 @@
           tty-clock # Terminal clock
           usbutils # Terminal USB info
           wavemon # Terminal WiFi monitor
-          nom # nix output monitor
+          nix-output-monitor # nix output monitor
         ];
       };
 
