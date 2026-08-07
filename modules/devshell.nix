@@ -14,6 +14,7 @@
           nil
           ruff
           nh
+          nix-output-monitor
         ];
       };
     };
