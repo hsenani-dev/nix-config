@@ -44,7 +44,7 @@
         };
         nd = {
           body = ''
-            set -l cmd "nix develop --print-build-logs '.?submodules=1#$argv'"
+            set -l cmd "${pkgs.nom} develop --print-build-logs '.?submodules=1#$argv'"
             echo "> $cmd"
             eval "$cmd"
           '';
@@ -82,13 +82,13 @@
           arg_array=($@)
           derivation=''${arg_array[1]}
           args=''${arg_array[@]:1}
-          local cmd="nix build --print-build-logs ''${args} '.?submodules=1#''${derivation}'"
+          local cmd="${pkgs.nom} build --print-build-logs ''${args} '.?submodules=1#''${derivation}'"
           echo "> $cmd"
           eval "$cmd"
         }
 
         nd() {
-          local cmd="nix develop --print-build-logs '.?submodules=1#$@'"
+          local cmd="${pkgs.nom} develop --print-build-logs '.?submodules=1#$@'"
           echo "> $cmd"
           eval "$cmd"
         }
@@ -133,6 +133,7 @@
           tty-clock # Terminal clock
           usbutils # Terminal USB info
           wavemon # Terminal WiFi monitor
+          nom # nix output monitor
         ];
       };
 
