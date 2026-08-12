@@ -30,7 +30,7 @@
           "AutofillAddressEnabled" = false;
           "AutofillCreditCardEnabled" = false;
           "BackgroundModeEnabled" = false;
-          "BookmarkBarEnabled" = false;
+          "BookmarkBarEnabled" = true;
           "BrowserAddPersonEnabled" = true;
           "BrowserLabsEnabled" = false;
           "PromotionalTabsEnabled" = false;
