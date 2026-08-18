@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.work =
+  flake.modules.homeManager.base =
     { config, ... }:
     let
       browser = "chromium-browser.desktop";
