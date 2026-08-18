@@ -6,6 +6,16 @@
 
     environment.systemPackages = with pkgs; [
       gnome-themes-extra
+      xdg-utils
     ];
+
+    xdg.portal = {
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-cosmic ];
+      config.common.default = [
+        "cosmic"
+        "gtk"
+      ];
+    };
   };
 }
