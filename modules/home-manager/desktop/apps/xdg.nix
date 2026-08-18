@@ -13,6 +13,10 @@
           "x-scheme-handler/unknown" = browser;
         };
 
+        # Pin URL handlers. Electron apps (Slack in particular) call
+        # `xdg-settings set default-web-browser` on themselves at startup, which
+        # hijacks http/https/text/html and swallows every link the desktop hands
+        # them. home-manager writes mimeapps.list read-only, so this stops it.
         defaultApplications = {
           "text/html" = browser;
           "x-scheme-handler/http" = browser;
