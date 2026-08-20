@@ -17,8 +17,6 @@
           settings.user = {
             email = params.user.email;
             name = params.user.display-name;
-
-            push.autoSetupRemote = true;
           };
           settings = {
             alias = {
@@ -40,6 +38,7 @@
             };
             push = {
               default = "matching";
+              autoSetupRemote = true;
             };
             pull = {
               rebase = false;
